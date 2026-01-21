@@ -1,16 +1,31 @@
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "next": "https://esm.sh/next@^16.1.1",
-    "next/": "https://esm.sh/next@^16.1.1/",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "tailwindcss": "https://esm.sh/tailwindcss@^4.1.18",
-    "path": "https://esm.sh/path@^0.12.7",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-  }
-}
-</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "next": "https://esm.sh/next@^16.1.1",
+        "next/": "https://esm.sh/next@^16.1.1/",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "tailwindcss": "https://esm.sh/tailwindcss@^4.1.18",
+        "path": "https://esm.sh/path@^0.12.7",
+        "vite": "https://esm.sh/vite@^7.3.1",
+        "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- #region agent log -->
+    <script>
+      fetch('http://127.0.0.1:7244/ingest/5793bc13-8268-456b-a225-7d341b6cb439',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'index.html:33',message:'root index.html loaded',data:{path:window.location.pathname,hasRoot:!!document.getElementById('root')},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'H1'})}).catch(()=>{});
+    </script>
+    <!-- #endregion -->
+  </body>
+</html>
