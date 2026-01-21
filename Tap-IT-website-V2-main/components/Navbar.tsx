@@ -75,20 +75,13 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'solid' }) => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-6 2xl:gap-8 items-center">
-          <Link href="/" className={linkClass('/')}>Home</Link>
-          <Link href="/ecosystem" className={linkClass('/ecosystem')}>Ecosystem</Link>
-          <Link href="/health-check" className={linkClass('/health-check')}>Health Check</Link>
-          <Link href="/about" className={linkClass('/about')}>Our Story</Link>
-          <Link href="/pitch/capri-partners" className={linkClass('/pitch/capri-partners')}>Capri Deck</Link>
-          <Link href="/pitch/capri-partners-styled" className={linkClass('/pitch/capri-partners-styled')}>Capri Brand</Link>
-          <Link href="/capri-pva" className={linkClass('/capri-pva')}>Capri PvA</Link>
-          <Link href="/capri-onboarding-journey" className={linkClass('/capri-onboarding-journey')}>Capri Onboarding Journey</Link>
-          <Link href="/contact" className={linkClass('/contact')}>Contact</Link>
-          
-          {/* OPTIMIZATION: Button sizes adjusted for 1280px viewport */}
-          <Link href="/contact" className="ml-2 2xl:ml-4 px-5 py-2 2xl:px-6 2xl:py-3 bg-[#3A6EFF] text-white text-[10px] 2xl:text-xs font-bold uppercase tracking-widest rounded hover:bg-[#081A57] transition-all shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5">
-            Join Pilot
-          </Link>
+          <Link href="/capri-onboarding-journey" className={linkClass('/capri-onboarding-journey')}>Onboarding Journey</Link>
+          <Link href="/capri-onboarding-journey/fase-0" className={linkClass('/capri-onboarding-journey/fase-0')}>Fase 0</Link>
+          <Link href="/capri-onboarding-journey/fase-1" className={linkClass('/capri-onboarding-journey/fase-1')}>Fase 1</Link>
+          <Link href="/capri-onboarding-journey/fase-2" className={linkClass('/capri-onboarding-journey/fase-2')}>Fase 2</Link>
+          <Link href="/capri-onboarding-journey/fase-3" className={linkClass('/capri-onboarding-journey/fase-3')}>Fase 3</Link>
+          <Link href="/capri-onboarding-journey/fase-4" className={linkClass('/capri-onboarding-journey/fase-4')}>Fase 4</Link>
+          <Link href="/capri-onboarding-journey/fase-5" className={linkClass('/capri-onboarding-journey/fase-5')}>Fase 5</Link>
         </div>
         
         {/* Mobile Toggle */}
