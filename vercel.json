@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "installCommand": "cd Tap-IT-website-V2-main && npm install",
+  "installCommand": "npm install && cd Tap-IT-website-V2-main && npm install",
   "buildCommand": "cd Tap-IT-website-V2-main && npm run build",
   "outputDirectory": "Tap-IT-website-V2-main/.next"
 }
