@@ -6,7 +6,8 @@
     "dev": "cd Tap-IT-website-V2-main && npm run dev",
     "build": "cd Tap-IT-website-V2-main && npm run build",
     "start": "cd Tap-IT-website-V2-main && npm run start",
-    "lint": "cd Tap-IT-website-V2-main && npm run lint"
+    "lint": "cd Tap-IT-website-V2-main && npm run lint",
+    "postinstall": "cd Tap-IT-website-V2-main && npm install"
   },
   "dependencies": {
     "next": "14.2.3"

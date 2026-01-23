@@ -170,11 +170,10 @@ const CapriOnboardingOverview: React.FC = () => {
                 </div>
             </div>
         </section>
+        </div>
       </main>
 
       <SiteFooter />
-        </div>
-      </main>
     </div>
   );
 };
