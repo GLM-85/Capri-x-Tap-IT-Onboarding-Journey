@@ -12,6 +12,11 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+/* Hide elements marked for exclusion during PDF export */
+body.pdf-exporting .pdf-ignore {
+  display: none !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Download } from 'lucide-react';
+import { useCallback, useRef, useState } from 'react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 import Navbar from '../../components/Navbar';
 import SiteFooter from '../../components/SiteFooter';
 import { phases } from './data';
@@ -12,11 +15,63 @@ export const metadata: Metadata = {
 };
 
 const CapriOnboardingOverview: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [generating, setGenerating] = useState(false);
+
+  const handleDownloadPdf = useCallback(async () => {
+    if (!containerRef.current || generating) return;
+    setGenerating(true);
+    document.body.classList.add('pdf-exporting');
+    try {
+      // Give the DOM a moment to apply pdf-ignore visibility changes
+      await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 50)));
+      const target = containerRef.current;
+      const canvas = await html2canvas(target, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#EDE8E4',
+        windowWidth: document.documentElement.clientWidth,
+        windowHeight: target.scrollHeight,
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const targetW = 1200; // points
+      const targetH = targetW * (canvas.height / canvas.width);
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'pt',
+        format: [targetW, targetH],
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0, targetW, targetH, undefined, 'FAST');
+      pdf.save('capri-onboarding-journey.pdf');
+    } catch (err) {
+      console.error('PDF generation failed', err);
+    } finally {
+      document.body.classList.remove('pdf-exporting');
+      setGenerating(false);
+    }
+  }, [generating]);
+
   return (
     <div className="min-h-screen bg-[#EDE8E4] flex flex-col font-sans text-[#202020] pt-[80px]">
-      <Navbar variant="solid" />
+      <div className="pdf-ignore">
+        <Navbar variant="solid" />
+      </div>
 
       <main className="flex-grow">
+        <div className="pdf-ignore sticky top-[90px] z-40 flex justify-end container mx-auto max-w-6xl px-6">
+          <button
+            type="button"
+            onClick={handleDownloadPdf}
+            disabled={generating}
+            className="inline-flex items-center gap-2 bg-[#294344] text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+          >
+            <Download size={16} />
+            {generating ? 'Generating…' : 'Download PDF'}
+          </button>
+        </div>
+
+        <div ref={containerRef}>
         {/* --- HERO --- */}
         <section className="relative pt-12 md:pt-20 pb-14 px-6 overflow-hidden">
            {/* Decor */}
@@ -118,6 +173,8 @@ const CapriOnboardingOverview: React.FC = () => {
       </main>
 
       <SiteFooter />
+        </div>
+      </main>
     </div>
   );
 };
