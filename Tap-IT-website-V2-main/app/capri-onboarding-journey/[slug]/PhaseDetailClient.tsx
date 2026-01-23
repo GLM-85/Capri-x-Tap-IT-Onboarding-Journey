@@ -108,7 +108,7 @@ const ChecklistSection = ({ checklist }: { checklist: any }) => {
 // --- SIDEBAR NAVIGATION ---
 const SidebarNav = ({ phase }: { phase: PhaseData }) => {
     return (
-        <div className="hidden lg:block sticky top-32 w-full">
+        <div className="hidden lg:block w-full">
             {/* Menu Card (matches screenshot) */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#336F73] mb-4">
@@ -305,7 +305,7 @@ export default function PhaseDetailClient({
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
                 
                 {/* Left Column: Sidebar (3/12) */}
-                <div className="lg:w-3/12">
+                <div className="lg:w-3/12 lg:sticky lg:top-32 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
                      <SidebarNav phase={phase} />
                 </div>
 
