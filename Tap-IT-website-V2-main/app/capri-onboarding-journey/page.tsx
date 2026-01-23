@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+"use client";
 import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
