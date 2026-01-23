@@ -53,15 +53,16 @@ const CapriOnboardingClient: React.FC = () => {
       </div>
 
       <main className="flex-grow">
-        <div className="pdf-ignore sticky top-[90px] z-40 flex justify-end container mx-auto max-w-6xl px-6">
+        <div className="pdf-ignore sticky top-[104px] z-40 flex justify-end container mx-auto max-w-6xl px-6">
           <button
             type="button"
             onClick={handleDownloadPdf}
             disabled={generating}
-            className="inline-flex items-center gap-2 bg-[#204445] text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            className="inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            aria-label="Download PDF"
+            title="Download PDF"
           >
-            <Download size={16} />
-            {generating ? 'Generating…' : 'Download PDF'}
+            <Download size={18} />
           </button>
         </div>
 

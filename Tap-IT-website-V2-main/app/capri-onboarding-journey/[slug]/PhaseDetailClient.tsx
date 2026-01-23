@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, ChevronUp, FileText, Target, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, ChevronUp, Download, FileText, Target, Users } from 'lucide-react';
 import Navbar from '../../../components/Navbar';
 import SiteFooter from '../../../components/SiteFooter';
 import type { PhaseData } from '../data';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 // --- ACCORDION COMPONENT ---
 const ContentCard = ({
@@ -163,14 +165,64 @@ export default function PhaseDetailClient({
   allPhases: PhaseData[];
 }) {
   const nextPhase = allPhases.find((p) => p.id === phase.nextPhase);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [generating, setGenerating] = React.useState(false);
+
+  const handleDownloadPdf = React.useCallback(async () => {
+    if (!containerRef.current || generating) return;
+    setGenerating(true);
+    document.body.classList.add('pdf-exporting');
+    try {
+      await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 50)));
+      const target = containerRef.current;
+      const canvas = await html2canvas(target, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#EEE8E4',
+        windowWidth: document.documentElement.clientWidth,
+        windowHeight: target.scrollHeight,
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const targetW = 1200;
+      const targetH = targetW * (canvas.height / canvas.width);
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'pt',
+        format: [targetW, targetH],
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0, targetW, targetH, undefined, 'FAST');
+      pdf.save('capri-onboarding-journey.pdf');
+    } catch (err) {
+      console.error('PDF generation failed', err);
+    } finally {
+      document.body.classList.remove('pdf-exporting');
+      setGenerating(false);
+    }
+  }, [generating]);
 
   return (
     <div className="min-h-screen bg-[#ECE8E4] flex flex-col font-sans text-[#202020] pt-[80px]">
-      <Navbar variant="solid" />
+      <div className="pdf-ignore">
+        <Navbar variant="solid" />
+      </div>
 
       <main className="flex-grow">
+        <div className="pdf-ignore sticky top-[104px] z-50 flex justify-end container mx-auto max-w-7xl px-6">
+          <button
+            type="button"
+            onClick={handleDownloadPdf}
+            disabled={generating}
+            className="inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            aria-label="Download PDF"
+            title="Download PDF"
+          >
+            <Download size={18} />
+          </button>
+        </div>
         
         {/* --- HERO (Dark Green) --- */}
+        <div ref={containerRef}>
         <section className="bg-[#204445] text-white pt-16 pb-24 px-6 relative overflow-hidden">
              {/* Background Glow */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#336F73] rounded-full blur-[120px] opacity-20 translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
@@ -410,6 +462,7 @@ export default function PhaseDetailClient({
             </div>
         </section>
 
+        </div>
       </main>
 
       <SiteFooter />
