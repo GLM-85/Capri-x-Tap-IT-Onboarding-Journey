@@ -28,10 +28,10 @@ const ContentCard = ({
         className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none group bg-white relative z-10"
         type="button"
       >
-        <h2 className="text-xl md:text-2xl font-black text-[#202020] uppercase tracking-wide group-hover:text-[#EE7E5A] transition-colors">
+        <h2 className="text-xl md:text-2xl font-black text-[#202020] uppercase tracking-wide group-hover:text-[#FF7650] transition-colors">
             {title}
         </h2>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#EE7E5A] text-white' : 'bg-[#EDE8E4] text-[#202020] group-hover:bg-[#EE7E5A] group-hover:text-white'}`}>
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#FF7650] text-white' : 'bg-[#EEE8E4] text-[#202020] group-hover:bg-[#FF7650] group-hover:text-white'}`}>
           {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </div>
       </button>
@@ -47,9 +47,9 @@ const ContentCard = ({
 // --- CHECKLIST COMPONENT ---
 const ChecklistSection = ({ checklist }: { checklist: any }) => {
     return (
-        <div className="bg-[#294344] text-white rounded-xl p-8 md:p-10 shadow-lg mt-10 scroll-mt-32" id="checklist">
+        <div className="bg-[#204445] text-white rounded-xl p-8 md:p-10 shadow-lg mt-10 scroll-mt-32" id="checklist">
             <div className="flex items-center gap-4 mb-8">
-                 <div className="w-8 h-8 rounded-full border-2 border-[#EE7E5A] flex items-center justify-center text-[#EE7E5A]">
+                 <div className="w-8 h-8 rounded-full border-2 border-[#FF7650] flex items-center justify-center text-[#FF7650]">
                     <CheckCircle2 size={16} />
                  </div>
                  <h2 className="text-2xl md:text-3xl font-black uppercase tracking-wide">Capri Checklist</h2>
@@ -58,7 +58,7 @@ const ChecklistSection = ({ checklist }: { checklist: any }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 border-t border-white/10 pt-8">
                 {/* Column 1 */}
                 <div>
-                    <h4 className="flex items-center gap-2 text-[#EE7E5A] font-bold uppercase text-xs tracking-[0.2em] mb-4">
+                    <h4 className="flex items-center gap-2 text-[#FF7650] font-bold uppercase text-xs tracking-[0.2em] mb-4">
                         <FileText size={14} /> Wat hebben we nodig?
                     </h4>
                     <ul className="space-y-3">
@@ -72,7 +72,7 @@ const ChecklistSection = ({ checklist }: { checklist: any }) => {
                 </div>
                 {/* Column 2 */}
                 <div>
-                    <h4 className="flex items-center gap-2 text-[#EE7E5A] font-bold uppercase text-xs tracking-[0.2em] mb-4">
+                    <h4 className="flex items-center gap-2 text-[#FF7650] font-bold uppercase text-xs tracking-[0.2em] mb-4">
                         <Users size={14} /> Wie sluit aan?
                     </h4>
                     <ul className="space-y-3">
@@ -86,13 +86,13 @@ const ChecklistSection = ({ checklist }: { checklist: any }) => {
                 </div>
                 {/* Column 3 */}
                 <div>
-                    <h4 className="flex items-center gap-2 text-[#EE7E5A] font-bold uppercase text-xs tracking-[0.2em] mb-4">
+                    <h4 className="flex items-center gap-2 text-[#FF7650] font-bold uppercase text-xs tracking-[0.2em] mb-4">
                         <Target size={14} /> Besluiten (Go/No-Go)
                     </h4>
                     <ul className="space-y-3">
                         {checklist.decisions.map((item: string, i: number) => (
                             <li key={i} className="flex items-start gap-3 text-white text-sm font-bold leading-relaxed">
-                                <CheckCircle2 size={14} className="text-[#EE7E5A] mt-1 shrink-0" />
+                                <CheckCircle2 size={14} className="text-[#FF7650] mt-1 shrink-0" />
                                 {item}
                             </li>
                         ))}
@@ -109,7 +109,7 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
         <div className="hidden lg:block sticky top-32 w-full">
             {/* Menu Card (matches screenshot) */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#436E72] mb-4">
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#336F73] mb-4">
                     In deze fase
                 </h3>
                 <div className="h-px bg-gray-100 mb-4"></div>
@@ -123,7 +123,7 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
                         <a
                            key={link.id}
                            href={`#${link.id}`}
-                           className="text-[#202020] font-bold hover:text-[#EE7E5A] transition-colors text-sm"
+                           className="text-[#202020] font-bold hover:text-[#FF7650] transition-colors text-sm"
                         >
                             {link.label}
                         </a>
@@ -131,8 +131,8 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
 
                     <div className="h-px bg-gray-100 my-2"></div>
 
-                    <a href="#checklist" className="flex items-center gap-3 text-[#436E72] font-bold text-sm hover:text-[#EE7E5A] transition-colors">
-                        <div className="w-5 h-5 rounded-full border border-[#436E72]/30 flex items-center justify-center">
+                    <a href="#checklist" className="flex items-center gap-3 text-[#336F73] font-bold text-sm hover:text-[#FF7650] transition-colors">
+                        <div className="w-5 h-5 rounded-full border border-[#336F73]/30 flex items-center justify-center">
                             <CheckCircle2 size={12} />
                         </div>
                         Capri Checklist
@@ -142,11 +142,11 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
 
             {/* Help Widget */}
             <div className="bg-[#EBDDD7] rounded-xl p-6 border border-transparent">
-                <h4 className="text-[#EE7E5A] font-bold uppercase text-xs tracking-widest mb-3">Hulp nodig?</h4>
+                <h4 className="text-[#FF7650] font-bold uppercase text-xs tracking-widest mb-3">Hulp nodig?</h4>
                 <p className="text-sm text-[#202020] mb-4 leading-relaxed">
                     Neem direct contact op met je Customer Success Manager.
                 </p>
-                <Link href="/contact" className="text-xs font-bold underline decoration-[#202020] hover:text-[#EE7E5A] hover:decoration-[#EE7E5A] transition-all">
+                <Link href="/contact" className="text-xs font-bold underline decoration-[#202020] hover:text-[#FF7650] hover:decoration-[#FF7650] transition-all">
                     Contact opnemen
                 </Link>
             </div>
@@ -171,23 +171,23 @@ export default function PhaseDetailClient({
       <main className="flex-grow">
         
         {/* --- HERO (Dark Green) --- */}
-        <section className="bg-[#294344] text-white pt-16 pb-24 px-6 relative overflow-hidden">
+        <section className="bg-[#204445] text-white pt-16 pb-24 px-6 relative overflow-hidden">
              {/* Background Glow */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#436E72] rounded-full blur-[120px] opacity-20 translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#336F73] rounded-full blur-[120px] opacity-20 translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
             <div className="container mx-auto max-w-7xl relative z-10">
                 
                 {/* Breadcrumb */}
                 <Link
                     href="/capri-onboarding-journey"
-                    className="inline-flex items-center gap-2 text-[#EE7E5A] hover:text-white transition-colors text-xs font-bold uppercase tracking-[0.2em] mb-12"
+                    className="inline-flex items-center gap-2 text-[#FF7650] hover:text-white transition-colors text-xs font-bold uppercase tracking-[0.2em] mb-12"
                 >
                     <ArrowLeft size={14} /> Terug naar overzicht
                 </Link>
 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
                      {/* Big Number Circle */}
-                     <div className="w-20 h-20 md:w-32 md:h-32 rounded-full bg-[#EE7E5A] flex items-center justify-center shrink-0 shadow-2xl shadow-[#EE7E5A]/20">
+                     <div className="w-20 h-20 md:w-32 md:h-32 rounded-full bg-[#FF7650] flex items-center justify-center shrink-0 shadow-2xl shadow-[#FF7650]/20">
                         <span className="text-4xl md:text-7xl font-black text-white">{phase.number}</span>
                      </div>
                      
@@ -206,7 +206,7 @@ export default function PhaseDetailClient({
                                 // Extract just the keyword if possible "Doel: Begrip" -> "Begrip"
                                 const label = tag.split(': ')[1] || tag; 
                                 return (
-                                    <span key={i} className="px-4 py-2 bg-[#436E72]/40 backdrop-blur-sm border border-white/10 rounded-full text-[11px] font-black uppercase tracking-widest text-white">
+                                    <span key={i} className="px-4 py-2 bg-[#336F73]/40 backdrop-blur-sm border border-white/10 rounded-full text-[11px] font-black uppercase tracking-widest text-white">
                                         {label}
                                     </span>
                                 )
@@ -231,13 +231,13 @@ export default function PhaseDetailClient({
                           return (
                               <Link key={p.id} href={`/capri-onboarding-journey/${p.slug}`} className="group relative flex flex-col items-center justify-center">
                                   <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg transition-all duration-300
-                                      ${isCurrent ? 'bg-[#EE7E5A] text-white scale-110 shadow-lg' : 
+                                      ${isCurrent ? 'bg-[#FF7650] text-white scale-110 shadow-lg' : 
                                         'bg-[#E5E5E5] text-[#A0A0A0] hover:bg-[#D4D4D4]'}
                                   `}>
                                       {p.number}
                                   </div>
                                   {isCurrent && (
-                                      <div className="absolute top-full mt-6 text-[10px] font-bold uppercase tracking-widest text-[#EE7E5A] whitespace-nowrap">
+                                      <div className="absolute top-full mt-6 text-[10px] font-bold uppercase tracking-widest text-[#FF7650] whitespace-nowrap">
                                           FASE {p.number}
                                       </div>
                                   )}
@@ -294,11 +294,11 @@ export default function PhaseDetailClient({
                                 ))}
                             </ul>
                             {/* Callout Box Inside Accordion */}
-                            <div className="bg-[#E9ECEC] rounded-xl p-6 border-l-4 border-[#436E72]">
-                                <span className="text-xs font-bold uppercase tracking-widest text-[#436E72] block mb-2">
+                            <div className="bg-[#E9ECEC] rounded-xl p-6 border-l-4 border-[#336F73]">
+                                <span className="text-xs font-bold uppercase tracking-widest text-[#336F73] block mb-2">
                                     Wat betekent dit voor Capri?
                                 </span>
-                                <p className="font-bold text-[#294344]">
+                                <p className="font-bold text-[#204445]">
                                     "{phase.activities[0]?.callout || "We zorgen dat de oplossing past bij jullie dagelijkse realiteit."}"
                                 </p>
                             </div>
@@ -388,7 +388,7 @@ export default function PhaseDetailClient({
                                         <span className="block text-[10px] font-bold uppercase tracking-widest text-[#BDB9B6]">Volgende stap</span>
                                         <span className="block text-lg font-bold text-[#202020]">Ga naar Fase {nextPhase.number}</span>
                                     </div>
-                                    <div className="w-12 h-12 rounded-full bg-[#F5F3F0] flex items-center justify-center group-hover:bg-[#EE7E5A] group-hover:text-white transition-colors">
+                                    <div className="w-12 h-12 rounded-full bg-[#F5F3F0] flex items-center justify-center group-hover:bg-[#FF7650] group-hover:text-white transition-colors">
                                         <ArrowRight size={20} />
                                     </div>
                                 </Link>
@@ -396,10 +396,10 @@ export default function PhaseDetailClient({
                         ) : (
                             <div className="bg-white pl-8 pr-2 py-2 rounded-full shadow-xl border border-gray-100 flex items-center gap-4">
                                  <div className="text-right">
-                                    <span className="block text-[10px] font-bold uppercase tracking-widest text-[#EE7E5A]">Journey Complete</span>
+                                    <span className="block text-[10px] font-bold uppercase tracking-widest text-[#FF7650]">Journey Complete</span>
                                     <span className="block text-lg font-bold text-[#202020]">Start samenwerking</span>
                                 </div>
-                                <div className="w-12 h-12 rounded-full bg-[#EE7E5A] text-white flex items-center justify-center">
+                                <div className="w-12 h-12 rounded-full bg-[#FF7650] text-white flex items-center justify-center">
                                     <CheckCircle2 size={20} />
                                 </div>
                             </div>
