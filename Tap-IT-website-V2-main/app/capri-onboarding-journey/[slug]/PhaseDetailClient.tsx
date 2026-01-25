@@ -297,7 +297,7 @@ export default function PhaseDetailClient({
                                       {p.number}
                                   </div>
                                   {isCurrent && (
-                                      <div className="absolute top-full mt-6 text-[10px] font-bold uppercase tracking-widest text-[#FF7650] whitespace-nowrap">
+                                      <div className="absolute top-full mt-2 text-[10px] font-bold uppercase tracking-widest text-[#FF7650] whitespace-nowrap">
                                           FASE {p.number}
                                       </div>
                                   )}
