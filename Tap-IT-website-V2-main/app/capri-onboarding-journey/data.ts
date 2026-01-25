@@ -97,40 +97,41 @@ export const phases: PhaseData[] = [
     slug: "fase-1",
     number: 1,
     title: "Capri High Level Design",
-    shortDescription: "Richtinggevende keuzes voor werkplek & security",
+    shortDescription: "Architectuurrichting en scope voor de moderne werkplek",
     tags: ["STRATEGIE", "WERKPLEK", "SECURITY"],
-    heroSummary: "We vertalen de context uit Fase 0 naar een conceptueel ontwerp. De grote lijnen van de moderne werkplek en security, zonder technische details.",
+    heroSummary: "We bepalen de architectuurrichting en kaders voor de moderne werkplek, voordat technische uitwerking start.",
     
-    goal: "Overeenstemming bereiken over de strategie en functionaliteit van de nieuwe IT-omgeving, zodat we zeker weten dat we de juiste richting op gaan. Dit ontwerp geeft richting, maar bevat nog geen technische details of implementatiekeuzes. Na deze fase weet Capri exact welke richting en uitgangspunten worden gekozen en kan het besluit worden genomen om door te gaan naar detailontwerp.",
+    goal: "Het vaststellen van een heldere, toekomstvaste architectuurrichting voor de moderne werkplek van Capri. Deze fase bepaalt wat er gebouwd wordt, waarom, en binnen welke kaders — voordat er technisch wordt uitgewerkt.",
     
     activities: [
       {
-        title: "Keuzes op hoofdlijnen",
-        content: ["We maken samen richtinggevende keuzes over hoe jullie willen werken (bijv. volledig online werken of deels met lokale systemen), hoe medewerkers hun device gebruiken en welk basis-niveau van beveiliging daarbij past."],
-        callout: "Hier bepalen we hoe de IT jullie business gaat ondersteunen."
+        title: "Architectuurrichting bepalen",
+        content: ["TAP-IT vertaalt de inzichten uit Fase 0 naar concrete architectuurprincipes voor identiteit, werkplek, security en samenwerking."]
       },
       {
-        title: "Gebruikers & werkdag",
-        content: ["We beschrijven de belangrijkste gebruikersgroepen en hoe hun werkdag eruitziet, zodat keuzes aansluiten op wat zij nodig hebben om soepel te kunnen werken."]
+        title: "Keuzes onderbouwen vanuit business & risico",
+        content: ["Elke keuze wordt gemotiveerd op basis van schaalbaarheid, security & compliance en aansluiting op klanten, partners en toekomstige groei."]
       },
       {
-        title: "Support & afspraken",
-        content: ["We spreken af wat jullie van support mogen verwachten en wat intern belegd blijft, zodat het duidelijk is wie waarvoor verantwoordelijk is en welke reactietijden passen bij jullie business."]
+        title: "Afbakening van scope",
+        content: ["We maken expliciet wat onderdeel is van de standaard werkplek, wat optioneel is en wat buiten scope valt. Zo ontstaat voorspelbaarheid in uitvoering, beheer en kosten."]
+      },
+      {
+        title: "Validatie met Capri (richting, geen techniek)",
+        content: ["Capri valideert de richting en uitgangspunten. TAP-IT bewaakt en bepaalt de architectuurkeuzes. Zoals een automonteur adviseert welk remsysteem veilig is, bepaalt TAP-IT welke IT-architectuur passend en verantwoord is."]
       }
     ],
     
     deliverables: [
       "Capri High Level Design (HLD)",
-      "Richtinggevende uitgangspunten en keuzes op hoofdlijnen",
-      "Overzicht van gebruikersgroepen en gewenste werkervaring",
-      "Afspraken over support, verwachtingen en verantwoordelijkheden",
-      "Kaders voor veiligheid en werkwijze (zonder detailontwerp)"
+      "Architectuurprincipes & scope-afbakening",
+      "Heldere basis voor verdere technische uitwerking"
     ],
     
     checklist: {
-      needs: ["Input Capri: feedback op concept HLD", "Input Capri: voorkeur voor hardware/devices"],
-      roles: ["Management", "Key Users (voor persona validatie)"],
-      decisions: ["Tap-IT besluit (met Capri akkoord): High Level Design vastgesteld", "Tap-IT besluit: richting en uitgangspunten vastgesteld (geen detailontwerp)", "Besluit Tap-IT + Capri: Go/No-Go voor start Fase 2"]
+      needs: ["Feedback op uitgangspunten en prioriteiten", "Inzicht in groeiplannen en samenwerkingen"],
+      roles: ["Capri management / partners", "TAP-IT architect"],
+      decisions: ["Akkoord op architectuurrichting", "Akkoord op scope en uitgangspunten", "Zonder akkoord start Fase 2 niet"]
     },
     nextPhase: "fase-2"
   },
@@ -139,34 +140,37 @@ export const phases: PhaseData[] = [
     slug: "fase-2",
     number: 2,
     title: "Tap-IT MSP Blueprint",
-    shortDescription: "Ontwerp herhaalbaar ecosysteem & architectuur",
+    shortDescription: "Product- en beheerstandaard voor een schaalbaar MSP-model",
     tags: ["ARCHITECTUUR", "SCHAALBAARHEID", "STANDAARDISATIE"],
-    heroSummary: "Dit is de machinekamer. We ontwerpen de blauwdruk voor het schaalbare MSP-model. Technische diepgang en architectuur staan centraal.",
+    heroSummary: "We vertalen het HLD naar een concrete product- en beheerstandaard voor een herhaalbaar MSP-model.",
     
-    goal: "Een gestandaardiseerde, veilige en schaalbare architectuur neerzetten die voor Capri werkt én herhaalbaar is als MSP-product. De MSP Blueprint is eigendom van Tap-IT; Capri is hierbij onze validatie- en use-case partner. Na deze fase weet Capri exact welke blauwdruk de basis wordt en welke keuzes door Tap-IT zijn vastgelegd.",
+    goal: "Het definiëren van een herhaalbaar, beheersbaar en schaalbaar MSP-model dat als fundament dient voor Capri — en toekomstige groei. Deze fase vertaalt de HLD naar een concrete product- en beheerstandaard.",
     
     activities: [
       {
-        title: "Architectuur Workshop (1 Dag)",
-        content: ["Kwaliteits- en challenge-sessie: we toetsen architectuurprincipes en standaardkeuzes met Tap-IT engineers/architecten én externe solution experts (zoals Frans)."],
-        callout: "We bouwen een fundament dat klaar is voor toekomstige groei."
+        title: "Definitieve productdefinitie vaststellen",
+        content: ["We leggen vast wat de standaard Managed Modern Workplace inhoudt. Standaard inbegrepen: Microsoft Entra ID (identity & access), Intune baseline policies, rollen & rechten, endpoint security, logging & basis monitoring. Optioneel / add-ons: mobile devices, hardware, networking (via partner of apart traject). Niet inbegrepen: on-prem infrastructuur, maatwerk per individuele gebruiker, complexe netwerkomgevingen."]
       },
       {
-        title: "Technische Domeinen Uitwerken",
-        content: ["Standaardiseren van de bouwblokken: identity, devices, security en monitoring als herhaalbare MSP-principes en patronen."]
+        title: "Minimum Viable Product (MVP) vastleggen",
+        content: ["Het MVP is direct inzetbaar, schaalbaar en beheerbaar. Dit voorkomt uitzonderingen en onvoorspelbaarheid in beheer."]
       },
       {
-        title: "Review & Validatie",
-        content: ["Review en validatie van de MSP Blueprint v1.0 op herhaalbaarheid, beheersbaarheid en kwaliteit (met Capri als use-case toets)."]
+        title: "Impact op beheer & pricing expliciet maken",
+        content: ["Keuzes in deze fase bepalen complexiteit van beheer, benodigde support en toekomstige kosten. Transparantie vóór implementatie."]
       }
     ],
     
-    deliverables: ["Tap-IT MSP Blueprint v1.0"],
+    deliverables: [
+      "Tap-IT MSP Blueprint v1.0",
+      "Vastgelegde productstandaard",
+      "Duidelijke afbakening van wat wel en niet geleverd wordt"
+    ],
     
     checklist: {
-      needs: ["Input Capri: technische requirements (indien specifiek)", "Input Capri: toegang tot huidige omgevingen (read-only)"],
-      roles: ["Tap-IT Engineers", "Externe Experts"],
-      decisions: ["Tap-IT besluit: MSP Blueprint gevalideerd", "Tap-IT besluit: standaard MSP-tooling en architectuurprincipes vastgesteld", "Tap-IT besluit: detailinvulling per klant volgt in Fase 3"]
+      needs: ["Validatie van business-fit", "Inzicht in gewenste flexibiliteit"],
+      roles: ["TAP-IT engineers / architecten", "Eventuele externe experts"],
+      decisions: ["Akkoord op MSP Blueprint", "Akkoord op MVP en scope", "Dit is de basis voor technische uitwerking in Fase 3"]
     },
     nextPhase: "fase-3"
   },
