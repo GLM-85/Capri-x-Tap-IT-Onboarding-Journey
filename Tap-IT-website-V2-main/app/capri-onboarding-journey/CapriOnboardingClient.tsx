@@ -81,10 +81,56 @@ const CapriOnboardingClient: React.FC = () => {
                  <span className="text-[#FF7650]">Onboarding Journey</span>
               </h1>
               <p className="text-xl md:text-3xl font-light opacity-90 max-w-3xl leading-normal mb-10 md:text-left mx-auto md:mx-0">
-                  Stap voor stap van onboarding naar een schaalbaar MSP-ecosysteem. 
-                  Capri wordt actief meegenomen in elke fase van het proces.
+                  Een gefaseerde aanpak waarin we Capri begeleiden naar een veilige, schaalbare en investeerbare IT-fundering — zonder snelheid of ondernemerschap te remmen.
               </p>
            </div>
+        </section>
+
+        {/* --- GUIDING PRINCIPLES --- */}
+        <section className="py-6 px-6">
+          <div className="container mx-auto max-w-6xl">
+            <div className="bg-white rounded-[2rem] shadow-sm border border-[#E1E9E6] p-6 md:p-8">
+              <div className="inline-block px-3 py-1 bg-[#336F73]/10 text-[#336F73] text-[10px] font-bold uppercase tracking-widest rounded-full mb-5">
+                Guiding Principles
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-[#E1E9E6]">
+                  <h3 className="text-sm font-black uppercase tracking-widest text-[#204445] mb-4">
+                    Samenwerkingsprincipe
+                  </h3>
+                  <ul className="space-y-3 text-sm text-[#202020]">
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                      Capri levert context, input en businessdoelen
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                      TAP-IT valideert, ontwerpt en bepaalt de oplossing
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                      Besluiten worden genomen op richting & scope, niet op technische invulling
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-[#E1E9E6]">
+                  <h3 className="text-sm font-black uppercase tracking-widest text-[#204445] mb-4">
+                    Governance
+                  </h3>
+                  <ul className="space-y-3 text-sm text-[#202020]">
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                      Elke fase eindigt met een expliciet Go / No-Go akkoordmoment
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                      Akkoord = basis voor volgende fase, geen detailgoedkeuring
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* --- PHASE OVERVIEW --- */}
@@ -112,6 +158,9 @@ const CapriOnboardingClient: React.FC = () => {
                                 </h3>
                                 <p className="text-base md:text-lg text-[#202020] font-medium opacity-70 mb-4">
                                     {phase.shortDescription}
+                                </p>
+                                <p className="text-sm md:text-base text-[#202020] opacity-80 mb-4">
+                                    {phase.overviewDecision}
                                 </p>
                                 <div className="flex flex-wrap gap-3">
                                     <span className="px-3 py-1 bg-[#336F73]/5 text-[#336F73]/70 text-[10px] font-bold uppercase tracking-wider rounded">
@@ -162,6 +211,32 @@ const CapriOnboardingClient: React.FC = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+                <div className="mt-12 bg-[#336F73]/80 p-8 md:p-10 rounded-2xl">
+                    <div className="inline-block px-3 py-1 bg-[#204445] text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">
+                        Waarom deze aanpak?
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-black uppercase mb-6">
+                        Business-waarde zonder innovatie te remmen
+                    </h3>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base">
+                        <li className="flex items-start gap-3">
+                            <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
+                            Beschermt groei zonder innovatie te vertragen — Operational resilience
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
+                            Maakt risico’s expliciet vóór ze schade veroorzaken — Risk-adjusted value
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
+                            Ondersteunt professionalisering richting klanten, partners en investeerders — Enterprise compatibility
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
+                            Creëert exit- en due-diligence-readiness
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
