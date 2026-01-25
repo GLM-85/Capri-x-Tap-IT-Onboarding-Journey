@@ -17,6 +17,7 @@ export interface PhaseData {
   number: number; // 0
   title: string; // "Intake & Context"
   shortDescription: string;
+  overviewDecision: string;
   tags: string[]; // [Doel, Deliverable, Go/No-Go]
   heroSummary: string;
   
@@ -24,6 +25,7 @@ export interface PhaseData {
   goal: string;
   activities: PhaseStep[];
   questions?: string[]; // Specific for Fase 0
+  intakeDomains?: { title: string; description: string }[];
   
   deliverables: string[];
   
@@ -39,32 +41,33 @@ export const phases: PhaseData[] = [
     number: 0,
     title: "Intake & Context",
     shortDescription: "Capri begrijpen zonder oplossingen te ontwerpen",
+    overviewDecision: "Capri management en Tap-IT besluiten bij het Go/No-Go moment of context en risico’s scherp genoeg zijn; zonder deze fase worden architectuurkeuzes niet onderbouwd en ontstaat risico in latere groei.",
     tags: ["STARTPUNT", "CONTEXT", "ANALYSE"],
     heroSummary: "Capri volledig begrijpen zonder direct oplossingen te ontwerpen. We leggen de basis voor een passend advies.",
     
-    goal: "We willen voorkomen dat we techniek implementeren die niet aansluit bij de bedrijfsprocessen. Daarom starten we met luisteren en inventariseren. Na deze fase weet Capri exact of de context compleet is en kan er een bewuste Go/No-Go-beslissing worden genomen.",
+    goal: "Inzicht verkrijgen in de huidige IT-situatie, volwassenheid, tooling en risico’s, zodat architectuur- en securitykeuzes in volgende fases objectief en verdedigbaar zijn.",
     
     activities: [
       {
         title: "Voorwerk & Data Request",
-        content: ["We vragen basisinformatie op over users en licenties. Indicatie: ± 30 min – Capri management & operations + Tap-IT."],
-        callout: "Jullie hoeven hier nog geen technische oplossingen te kiezen, alleen de situatie te schetsen."
+        content: ["We analyseren basisinformatie over users, licenties en huidige tooling. Indicatie: ± 30 min – Capri management & operations + Tap-IT."],
+        callout: "We toetsen de context en spiegelen wat dit betekent voor volgende keuzes."
       },
       {
         title: "Intake Sessie (± 2 uur)",
-        content: ["Een diepte-interview om de context te snappen. Indicatie: ± 2 uur – Capri management & operations + Tap-IT."]
+        content: ["We valideren de context en maken risico’s expliciet per domein. Indicatie: ± 2 uur – Capri management & operations + Tap-IT."]
       },
       {
         title: "Synthese",
-        content: ["Wij vertalen de input naar het 'Capri Customer Profile'. Indicatie: ± 1–2 werkdagen – Tap-IT (met input van Capri)."]
+        content: ["We analyseren de input en vertalen dit naar het Capri Customer Profile en IT Maturity Snapshot. Indicatie: ± 1–2 werkdagen – Tap-IT (met input van Capri)."]
       },
       {
         title: "Validatie",
-        content: ["Jullie controleren of we het goed begrepen hebben. Indicatie: ± 30 min – Capri management & operations."]
+        content: ["We spiegelen de conclusies en valideren de risico’s en groeibeperkingen. Indicatie: ± 30 min – Capri management & operations."]
       },
       {
         title: "Go / No-Go moment",
-        content: ["Op basis van het Capri Customer Profile besluiten we samen of we doorgaan naar Fase 1 (High Level Design). Indicatie: ± 30 min – Capri management + Tap-IT."]
+        content: ["Op basis van de vastgestelde context en risico’s besluiten we samen of we doorgaan naar Fase 1 (High Level Design). Indicatie: ± 30 min – Capri management + Tap-IT."]
       }
     ],
     
@@ -75,20 +78,29 @@ export const phases: PhaseData[] = [
       "Hoe gaan we om met data & compliance? We bespreken eisen rondom wetgeving en dataclassificatie.",
       "Waar ervaren medewerkers vandaag frictie in hun werk, en wat zou het hen makkelijker, rustiger en prettiger maken?"
     ],
+    
+    intakeDomains: [
+      { title: "Networking", description: "Huidige netwerkopzet, wifi, externe toegang, partners" },
+      { title: "Endpoints", description: "Apparatuur, beheer, updates, scheiding privé/zakelijk" },
+      { title: "Security", description: "Identity, toegang, data-bescherming, offboarding" },
+      { title: "Software & tooling", description: "Google / Microsoft, SaaS-gebruik, shadow IT" }
+    ],
 
     deliverables: [
       "Capri Customer Profile",
-      "Bedrijfscontext & groei",
-      "Gebruikers & persona’s",
-      "Devices & locaties",
-      "IT-volwassenheid",
-      "Belangrijkste pijnpunten & ambities"
+      "IT Maturity Snapshot",
+      "Risico- & groeibeperkingen overzicht",
+      "Advies over vervolgfase & prioriteiten"
     ],
     
     checklist: {
       needs: ["Input Capri: lijst met huidige applicaties", "Input Capri: organogram of user-overzicht", "Input Capri: beschikbaarheid voor intake"],
-      roles: ["Management", "Operations / HR"],
-      decisions: ["Besluit Tap-IT + Capri: bevestiging dat het profiel klopt", "Besluit Tap-IT + Capri: Go/No-Go voor start Fase 1"]
+      roles: ["Management", "Operations / HR", "Externe (pro-bono) IT-beheerder / partner (inzicht in configuratie en overdraagbaarheid)"],
+      decisions: [
+        "Wat beslissen we in deze fase? Akkoord op vastgestelde context & risico’s",
+        "Go / No-Go moment naar Fase 1 (High Level Design)",
+        "Akkoord om door te gaan naar High Level Design"
+      ]
     },
     nextPhase: "fase-1"
   },
@@ -97,7 +109,12 @@ export const phases: PhaseData[] = [
     slug: "fase-1",
     number: 1,
     title: "Capri High Level Design",
+<<<<<<< HEAD
     shortDescription: "Architectuurrichting en scope voor de moderne werkplek",
+=======
+    shortDescription: "Richtinggevende keuzes voor werkplek & security",
+    overviewDecision: "Capri management en Tap-IT besluiten bij het Go/No-Go moment of richting en scope kloppen; deze fase voorkomt detailontwerp zonder gedragen koers.",
+>>>>>>> 4b031133e5c1d414391f4b9854fa935925130883
     tags: ["STRATEGIE", "WERKPLEK", "SECURITY"],
     heroSummary: "We bepalen de architectuurrichting en kaders voor de moderne werkplek, voordat technische uitwerking start.",
     
@@ -140,7 +157,12 @@ export const phases: PhaseData[] = [
     slug: "fase-2",
     number: 2,
     title: "Tap-IT MSP Blueprint",
+<<<<<<< HEAD
     shortDescription: "Product- en beheerstandaard voor een schaalbaar MSP-model",
+=======
+    shortDescription: "Ontwerp herhaalbaar ecosysteem & architectuur",
+    overviewDecision: "Tap-IT beslist na review en validatie over de MSP Blueprint; deze fase borgt schaalbaarheid en standaardisatie vóór klantdetail.",
+>>>>>>> 4b031133e5c1d414391f4b9854fa935925130883
     tags: ["ARCHITECTUUR", "SCHAALBAARHEID", "STANDAARDISATIE"],
     heroSummary: "We vertalen het HLD naar een concrete product- en beheerstandaard voor een herhaalbaar MSP-model.",
     
@@ -180,6 +202,7 @@ export const phases: PhaseData[] = [
     number: 3,
     title: "LLD & Proof of Concept",
     shortDescription: "Detailontwerp en technische validatie",
+    overviewDecision: "Tap-IT en Capri beslissen na PoC/LLD of configuraties productie-klaar zijn; deze fase elimineert technische risico’s vóór livegang.",
     tags: ["DETAILONTWERP", "VALIDATIE", "PROOF OF CONCEPT"],
     heroSummary: "Papier is geduldig, techniek niet. We werken details uit tot op instelling-niveau en testen risicovolle onderdelen in een veilige omgeving.",
     
@@ -212,6 +235,7 @@ export const phases: PhaseData[] = [
     number: 4,
     title: "Implementatie & Decharge",
     shortDescription: "Bouw, migratie en oplevering",
+    overviewDecision: "Capri beslist bij decharge over acceptatie; deze fase zorgt voor gecontroleerde migratie en overdracht naar beheer.",
     tags: ["UITROL", "MIGRATIE", "LIVEGANG"],
     heroSummary: "De daadwerkelijke uitrol. We bouwen de productieomgeving, migreren data en gebruikers, en zorgen voor een soepele overgang.",
     
@@ -248,6 +272,7 @@ export const phases: PhaseData[] = [
     number: 5,
     title: "Evaluatie & Standaardisatie",
     shortDescription: "Leren, verbeteren en borgen",
+    overviewDecision: "Tap-IT beslist na evaluatie welke verbeteringen worden geborgd; deze fase verankert leren en standaardisatie.",
     tags: ["EVALUATIE", "OPTIMALISATIE", "BORGING"],
     heroSummary: "Na de livegang stopt het niet. We evalueren het proces en het resultaat. De lessen verwerken we in de standaard voor de toekomst.",
     
