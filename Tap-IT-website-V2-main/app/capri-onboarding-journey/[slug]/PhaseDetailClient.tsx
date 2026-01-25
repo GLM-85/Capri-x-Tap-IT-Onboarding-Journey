@@ -119,6 +119,7 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
                     {[
                         { id: 'doel', label: 'Doel van deze fase' },
                         { id: 'activiteiten', label: 'Wat doen we?' },
+                        phase.intakeDomains ? { id: 'intake-per-domein', label: 'Intake per domein' } : null,
                         phase.questions ? { id: 'vragen', label: 'Kernvragen' } : null,
                         { id: 'deliverable', label: 'Deliverable' },
                     ].filter(Boolean).map((link: any) => (
@@ -315,6 +316,22 @@ export default function PhaseDetailClient({
                     {/* 1. DOEL */}
                     <ContentCard title="Doel van deze fase" id="doel" defaultOpen={true}>
                         <p className="text-[#202020]">{phase.goal}</p>
+                        {phase.id === 'fase-0' && (
+                            <div className="mt-6 bg-[#E9ECEC] rounded-xl p-6 border-l-4 border-[#336F73]">
+                                <span className="text-xs font-bold uppercase tracking-widest text-[#336F73] block mb-2">
+                                    Waarom deze fase cruciaal is
+                                </span>
+                                <p className="text-[#204445] font-bold mb-3">
+                                    Partner-onboarding en offboarding zijn kernrisico’s. Data-eigenaarschap bij vertrek moet expliciet zijn.
+                                </p>
+                                <p className="text-[#204445] mb-3">
+                                    Geen grip = risico voor klanten, reputatie en equity value.
+                                </p>
+                                <p className="text-[#204445] font-bold">
+                                    “Het gaat niet om zolang het goed gaat, maar om het moment dat het fout gaat.”
+                                </p>
+                            </div>
+                        )}
                     </ContentCard>
 
                     {/* 2. ACTIVITEITEN */}
@@ -333,6 +350,24 @@ export default function PhaseDetailClient({
                             ))}
                         </ul>
                     </ContentCard>
+
+                    {/* 2b. INTAKE PER DOMEIN */}
+                    {phase.intakeDomains && (
+                        <ContentCard title="Intake per domein" id="intake-per-domein" defaultOpen={true}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {phase.intakeDomains.map((domain, i) => (
+                                    <div key={i} className="bg-white rounded-xl border border-[#E1E9E6] p-5">
+                                        <h4 className="text-sm font-bold uppercase tracking-widest text-[#204445] mb-2">
+                                            {domain.title}
+                                        </h4>
+                                        <p className="text-sm text-[#202020] opacity-80">
+                                            {domain.description}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </ContentCard>
+                    )}
 
                     {/* 3. KERNVRAGEN */}
                     {phase.questions && (
@@ -368,10 +403,13 @@ export default function PhaseDetailClient({
                                 </div>
 
                                 <p className="text-[#202020] mt-3">
-                                    Een compact, helder profiel dat de context van Capri samenvat en zorgt dat we hetzelfde beeld hebben.
+                                    Een compact, helder profiel dat de context van Capri samenvat en zorgt dat we dezelfde uitgangspunten hanteren.
                                 </p>
                                 <p className="text-[#202020] mt-2">
-                                    We gebruiken dit als input voor Fase 1 (High Level Design), zodat keuzes straks aansluiten op jullie dagelijkse praktijk.
+                                    Dit wordt aangevuld met een IT Maturity Snapshot, een risico- & groeibeperkingen overzicht en een advies over vervolgfase en prioriteiten.
+                                </p>
+                                <p className="text-[#202020] mt-2 font-bold">
+                                    Zonder deze output geen verantwoorde Fase 1.
                                 </p>
 
                                 {phase.deliverables.length > 1 && (
