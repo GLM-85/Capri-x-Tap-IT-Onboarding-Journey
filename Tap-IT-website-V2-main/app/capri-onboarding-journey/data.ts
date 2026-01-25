@@ -26,6 +26,19 @@ export interface PhaseData {
   activities: PhaseStep[];
   questions?: string[]; // Specific for Fase 0
   intakeDomains?: { title: string; description: string }[];
+  rolesResponsibilities?: {
+    heading: string;
+    bullets: string[];
+  }[];
+  rolesAnalogy?: string;
+  networkingScope?: string[];
+  managedWorkplace?: {
+    heading: string;
+    items: string[];
+  }[];
+  mvpDefinition?: string;
+  managementPricingImpact?: string[];
+  accordMoment?: string;
   
   deliverables: string[];
   
@@ -108,43 +121,70 @@ export const phases: PhaseData[] = [
     id: "fase-1",
     slug: "fase-1",
     number: 1,
-    title: "Capri High Level Design",
-    shortDescription: "Architectuurrichting en scope voor de moderne werkplek",
-    overviewDecision: "Capri management en TAP-IT nemen het Go/No-Go besluit op architectuurrichting en scope; zonder akkoord start Fase 2 niet.",
+    title: "Architectuurrichting & Scopebesluit",
+    shortDescription: "Beslisfase voor richting en scope van de moderne werkplek",
+    overviewDecision: "TAP-IT bepaalt de architectuurrichting, Capri valideert; zonder expliciet akkoord op scope en uitgangspunten start Fase 2 niet.",
     tags: ["STRATEGIE", "WERKPLEK", "SECURITY"],
-    heroSummary: "We bepalen de architectuurrichting en kaders voor de moderne werkplek, voordat technische uitwerking start.",
+    heroSummary: "TAP-IT bepaalt de architectuurrichting en scope, Capri valideert de business-impact.",
     
-    goal: "Het vaststellen van een heldere, toekomstvaste architectuurrichting voor de moderne werkplek van Capri. Deze fase bepaalt wat er gebouwd wordt, waarom, en binnen welke kaders — voordat er technisch wordt uitgewerkt.",
+    goal: "In deze fase bepaalt TAP-IT de architectuurrichting voor de moderne werkplek, gebaseerd op de intake uit Fase 0. Capri valideert de richting vanuit business-impact, risico en groeiperspectief. Deze fase eindigt met een expliciet akkoord op scope en uitgangspunten.",
     
     activities: [
       {
-        title: "Architectuurrichting bepalen",
-        content: ["TAP-IT vertaalt de inzichten uit Fase 0 naar concrete architectuurprincipes voor identiteit, werkplek, security en samenwerking."]
+        title: "Architectuurprincipes vaststellen",
+        content: ["Vaststellen van architectuurprincipes voor de moderne werkplek."]
       },
       {
-        title: "Keuzes onderbouwen vanuit business & risico",
-        content: ["Elke keuze wordt gemotiveerd op basis van schaalbaarheid, security & compliance en aansluiting op klanten, partners en toekomstige groei."]
+        title: "Scope afbakenen",
+        content: ["Afbakening van de Managed Modern Workplace (scope)."]
       },
       {
-        title: "Afbakening van scope",
-        content: ["We maken expliciet wat onderdeel is van de standaard werkplek, wat optioneel is en wat buiten scope valt. Zo ontstaat voorspelbaarheid in uitvoering, beheer en kosten."]
+        title: "Afhankelijkheden kaderen",
+        content: ["Kaderen van afhankelijkheden (bijv. networking, hardware, partners)."]
       },
       {
-        title: "Validatie met Capri (richting, geen techniek)",
-        content: ["Capri valideert de richting en uitgangspunten. TAP-IT bewaakt en bepaalt de architectuurkeuzes. Zoals een automonteur adviseert welk remsysteem veilig is, bepaalt TAP-IT welke IT-architectuur passend en verantwoord is."]
+        title: "Security en groei borgen",
+        content: ["Vastleggen van expliciete uitgangspunten voor security en groei."]
       }
     ],
+
+    rolesResponsibilities: [
+      {
+        heading: "TAP-IT",
+        bullets: [
+          "Bepaalt architectuurkeuzes",
+          "Borgt security, schaalbaarheid en beheerbaarheid",
+          "Maakt expliciet wat wél en niet wordt geleverd"
+        ]
+      },
+      {
+        heading: "Capri",
+        bullets: [
+          "Levert context en business-prioriteiten",
+          "Valideert richting en uitgangspunten",
+          "Beslist niet over technische implementatie"
+        ]
+      }
+    ],
+    rolesAnalogy: "Net zoals een automonteur bepaalt welk type remblok veilig is, bepaalt TAP-IT welke IT-architectuur passend is.",
+    networkingScope: [
+      "Networking is geen standaard onderdeel van de Managed Modern Workplace.",
+      "TAP-IT levert high-level advies.",
+      "Afstemming met netwerkpartners indien nodig.",
+      "Uitvoering van complexe netwerken valt buiten scope of loopt via gespecialiseerde partners."
+    ],
+    accordMoment: "Go / No-Go moment — zonder expliciet akkoord op architectuurrichting en scope start Fase 2 niet.",
     
     deliverables: [
-      "Capri High Level Design (HLD)",
-      "Architectuurprincipes & scope-afbakening",
-      "Heldere basis voor verdere technische uitwerking"
+      "Architectuurrichting (op hoofdlijnen)",
+      "Scope-afbakening: wat zit wel / niet in de standaard",
+      "Vastgelegde uitgangspunten voor Fase 2"
     ],
     
     checklist: {
-      needs: ["Feedback op uitgangspunten en prioriteiten", "Inzicht in groeiplannen en samenwerkingen"],
+      needs: ["Feedback op business-impact, risico en groeiperspectief", "Bevestiging van scope en uitgangspunten"],
       roles: ["Capri management / partners", "TAP-IT architect"],
-      decisions: ["Akkoord op architectuurrichting", "Akkoord op scope en uitgangspunten", "Zonder akkoord start Fase 2 niet"]
+      decisions: ["Akkoord op architectuurrichting", "Akkoord op scope en uitgangspunten", "Go / No-Go moment: zonder akkoord start Fase 2 niet"]
     },
     nextPhase: "fase-2"
   },
@@ -152,39 +192,81 @@ export const phases: PhaseData[] = [
     id: "fase-2",
     slug: "fase-2",
     number: 2,
-    title: "Tap-IT MSP Blueprint",
-    shortDescription: "Product- en beheerstandaard voor een schaalbaar MSP-model",
-    overviewDecision: "TAP-IT en Capri nemen het Go/No-Go besluit op MSP Blueprint, MVP en scope; dit is de basis voor Fase 3.",
+    title: "Productdefinitie & MSP-Blueprint",
+    shortDescription: "Managed Modern Workplace-standaard als basis voor beheer",
+    overviewDecision: "Akkoord op productdefinitie en MVP is vereist vóór start van Fase 3.",
     tags: ["ARCHITECTUUR", "SCHAALBAARHEID", "STANDAARDISATIE"],
-    heroSummary: "We vertalen het HLD naar een concrete product- en beheerstandaard voor een herhaalbaar MSP-model.",
+    heroSummary: "TAP-IT definieert de Managed Modern Workplace-standaard en het MVP.",
     
-    goal: "Het definiëren van een herhaalbaar, beheersbaar en schaalbaar MSP-model dat als fundament dient voor Capri — en toekomstige groei. Deze fase vertaalt de HLD naar een concrete product- en beheerstandaard.",
+    goal: "In deze fase vertaalt TAP-IT de gekozen architectuurrichting naar een concrete, herhaalbare Managed Modern Workplace-standaard. Deze standaard vormt het fundament voor beheer, support en pricing.",
     
     activities: [
       {
-        title: "Definitieve productdefinitie vaststellen",
-        content: ["We leggen vast wat de standaard Managed Modern Workplace inhoudt. Standaard inbegrepen: Microsoft Entra ID (identity & access), Intune baseline policies, rollen & rechten, endpoint security, logging & basis monitoring. Optioneel / add-ons: mobile devices, hardware, networking (via partner of apart traject). Niet inbegrepen: on-prem infrastructuur, maatwerk per individuele gebruiker, complexe netwerkomgevingen."]
+        title: "Managed Modern Workplace-standaard definiëren",
+        content: ["Definiëren van de Managed Modern Workplace-standaard."]
       },
       {
-        title: "Minimum Viable Product (MVP) vastleggen",
-        content: ["Het MVP is direct inzetbaar, schaalbaar en beheerbaar. Dit voorkomt uitzonderingen en onvoorspelbaarheid in beheer."]
+        title: "MVP vaststellen",
+        content: ["Vaststellen van het Minimum Viable Product (MVP)."]
       },
       {
-        title: "Impact op beheer & pricing expliciet maken",
-        content: ["Keuzes in deze fase bepalen complexiteit van beheer, benodigde support en toekomstige kosten. Transparantie vóór implementatie."]
+        title: "Add-ons bepalen",
+        content: ["Bepalen van optionele uitbreidingen (add-ons)."]
+      },
+      {
+        title: "Beheer en kosten inzichtelijk maken",
+        content: ["Inzichtelijk maken van impact op beheer en kosten."]
       }
     ],
+
+    managedWorkplace: [
+      {
+        heading: "Standaard inbegrepen",
+        items: [
+          "Microsoft Entra ID (identity & access)",
+          "Intune baseline policies",
+          "Rollen & rechten",
+          "Endpoint security",
+          "Basis collaboration (Teams / SharePoint)"
+        ]
+      },
+      {
+        heading: "Optioneel (add-ons)",
+        items: [
+          "Mobile device support",
+          "Hardware & lifecycle management",
+          "Networking (via partner of apart traject)"
+        ]
+      },
+      {
+        heading: "Niet inbegrepen",
+        items: [
+          "On-prem infrastructuur",
+          "Klantspecifieke maatwerkarchitecturen",
+          "Niet-standaard security-constructies"
+        ]
+      }
+    ],
+    mvpDefinition: "Het MVP is de minimale, veilige en schaalbare werkplekstandaard die TAP-IT beheersbaar kan leveren. Afwijkingen van het MVP vergroten complexiteit, beheerlast en kosten.",
+    managementPricingImpact: [
+      "Beheercomplexiteit",
+      "Supportmodel",
+      "Prijsrichting",
+      "Daarom worden hier expliciet grenzen gesteld."
+    ],
+    accordMoment: "Go / No-Go moment — akkoord op productdefinitie en MVP is vereist vóór start van Fase 3.",
     
     deliverables: [
-      "Tap-IT MSP Blueprint v1.0",
-      "Vastgelegde productstandaard",
-      "Duidelijke afbakening van wat wel en niet geleverd wordt"
+      "Vastgelegde Managed Modern Workplace-standaard",
+      "Duidelijke MVP-afbakening",
+      "Overzicht standaard vs add-ons",
+      "Input voor LLD & implementatie"
     ],
     
     checklist: {
       needs: ["Validatie van business-fit", "Inzicht in gewenste flexibiliteit"],
       roles: ["TAP-IT engineers / architecten", "Eventuele externe experts"],
-      decisions: ["Akkoord op MSP Blueprint", "Akkoord op MVP en scope", "Dit is de basis voor technische uitwerking in Fase 3"]
+      decisions: ["Akkoord op productdefinitie", "Akkoord op MVP", "Go / No-Go moment: akkoord vereist vóór start Fase 3"]
     },
     nextPhase: "fase-3"
   },

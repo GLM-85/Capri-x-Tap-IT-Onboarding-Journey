@@ -118,10 +118,16 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
                 <nav className="flex flex-col gap-4">
                     {[
                         { id: 'doel', label: 'Doel van deze fase' },
+                        phase.rolesResponsibilities ? { id: 'rollen', label: 'Rollen & verantwoordelijkheden' } : null,
                         { id: 'activiteiten', label: 'Wat doen we?' },
                         phase.intakeDomains ? { id: 'intake-per-domein', label: 'Intake per domein' } : null,
                         phase.questions ? { id: 'vragen', label: 'Kernvragen' } : null,
+                        phase.networkingScope ? { id: 'networking-kader', label: 'Networking — kader' } : null,
+                        phase.managedWorkplace ? { id: 'managed-workplace', label: 'Managed Modern Workplace' } : null,
+                        phase.mvpDefinition ? { id: 'mvp-definitie', label: 'MVP-definitie' } : null,
+                        phase.managementPricingImpact ? { id: 'beheer-pricing', label: 'Beheer & pricing' } : null,
                         { id: 'deliverable', label: 'Deliverable' },
+                        phase.accordMoment ? { id: 'akkoordmoment', label: 'Akkoordmoment' } : null,
                     ].filter(Boolean).map((link: any) => (
                         <a
                            key={link.id}
@@ -334,6 +340,34 @@ export default function PhaseDetailClient({
                         )}
                     </ContentCard>
 
+                    {/* 1b. ROLLEN & VERANTWOORDELIJKHEDEN */}
+                    {phase.rolesResponsibilities && (
+                        <ContentCard title="Rollen & verantwoordelijkheden" id="rollen" defaultOpen={true}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {phase.rolesResponsibilities.map((role, i) => (
+                                    <div key={i} className="bg-white rounded-xl border border-[#E1E9E6] p-5">
+                                        <h4 className="text-sm font-bold uppercase tracking-widest text-[#204445] mb-3">
+                                            {role.heading}
+                                        </h4>
+                                        <ul className="space-y-2 text-sm text-[#202020]">
+                                            {role.bullets.map((item, j) => (
+                                                <li key={j} className="flex items-start gap-3">
+                                                    <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                            {phase.rolesAnalogy && (
+                                <p className="mt-5 text-[#204445] font-bold">
+                                    “{phase.rolesAnalogy}”
+                                </p>
+                            )}
+                        </ContentCard>
+                    )}
+
                     {/* 2. ACTIVITEITEN */}
                     <ContentCard title="Wat doen we?" id="activiteiten" defaultOpen={true}>
                         <ul className="space-y-3">
@@ -389,6 +423,64 @@ export default function PhaseDetailClient({
                                     "{phase.activities[0]?.callout || "We zorgen dat de oplossing past bij jullie dagelijkse realiteit."}"
                                 </p>
                             </div>
+                        </ContentCard>
+                    )}
+
+                    {/* 3b. NETWORKING KADER */}
+                    {phase.networkingScope && (
+                        <ContentCard title="Networking — expliciet kader" id="networking-kader" defaultOpen={true}>
+                            <ul className="space-y-3">
+                                {phase.networkingScope.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                        <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </ContentCard>
+                    )}
+
+                    {/* 3c. MANAGED MODERN WORKPLACE */}
+                    {phase.managedWorkplace && (
+                        <ContentCard title="Managed Modern Workplace — vaste structuur" id="managed-workplace" defaultOpen={true}>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                {phase.managedWorkplace.map((section, i) => (
+                                    <div key={i} className="bg-white rounded-xl border border-[#E1E9E6] p-5">
+                                        <h4 className="text-sm font-bold uppercase tracking-widest text-[#204445] mb-3">
+                                            {section.heading}
+                                        </h4>
+                                        <ul className="space-y-2 text-sm text-[#202020]">
+                                            {section.items.map((item, j) => (
+                                                <li key={j} className="flex items-start gap-3">
+                                                    <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </ContentCard>
+                    )}
+
+                    {/* 3d. MVP DEFINITIE */}
+                    {phase.mvpDefinition && (
+                        <ContentCard title="MVP-definitie" id="mvp-definitie" defaultOpen={true}>
+                            <p className="text-[#202020]">{phase.mvpDefinition}</p>
+                        </ContentCard>
+                    )}
+
+                    {/* 3e. BEHEER & PRICING */}
+                    {phase.managementPricingImpact && (
+                        <ContentCard title="Beheer & pricing-impact" id="beheer-pricing" defaultOpen={true}>
+                            <ul className="space-y-3">
+                                {phase.managementPricingImpact.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                        <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </ContentCard>
                     )}
 
@@ -457,6 +549,13 @@ export default function PhaseDetailClient({
                             </div>
                         )}
                     </ContentCard>
+
+                    {/* 4b. AKKOORDMOMENT */}
+                    {phase.accordMoment && (
+                        <ContentCard title="Akkoordmoment" id="akkoordmoment" defaultOpen={true}>
+                            <p className="text-[#202020]">{phase.accordMoment}</p>
+                        </ContentCard>
+                    )}
 
                     {/* 5. CHECKLIST (Dark Section) */}
                     <ChecklistSection checklist={phase.checklist} />
