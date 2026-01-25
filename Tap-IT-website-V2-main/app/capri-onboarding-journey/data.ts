@@ -109,12 +109,8 @@ export const phases: PhaseData[] = [
     slug: "fase-1",
     number: 1,
     title: "Capri High Level Design",
-<<<<<<< HEAD
     shortDescription: "Architectuurrichting en scope voor de moderne werkplek",
-=======
-    shortDescription: "Richtinggevende keuzes voor werkplek & security",
-    overviewDecision: "Capri management en Tap-IT besluiten bij het Go/No-Go moment of richting en scope kloppen; deze fase voorkomt detailontwerp zonder gedragen koers.",
->>>>>>> 4b031133e5c1d414391f4b9854fa935925130883
+    overviewDecision: "Capri management en TAP-IT nemen het Go/No-Go besluit op architectuurrichting en scope; zonder akkoord start Fase 2 niet.",
     tags: ["STRATEGIE", "WERKPLEK", "SECURITY"],
     heroSummary: "We bepalen de architectuurrichting en kaders voor de moderne werkplek, voordat technische uitwerking start.",
     
@@ -157,12 +153,8 @@ export const phases: PhaseData[] = [
     slug: "fase-2",
     number: 2,
     title: "Tap-IT MSP Blueprint",
-<<<<<<< HEAD
     shortDescription: "Product- en beheerstandaard voor een schaalbaar MSP-model",
-=======
-    shortDescription: "Ontwerp herhaalbaar ecosysteem & architectuur",
-    overviewDecision: "Tap-IT beslist na review en validatie over de MSP Blueprint; deze fase borgt schaalbaarheid en standaardisatie vóór klantdetail.",
->>>>>>> 4b031133e5c1d414391f4b9854fa935925130883
+    overviewDecision: "TAP-IT en Capri nemen het Go/No-Go besluit op MSP Blueprint, MVP en scope; dit is de basis voor Fase 3.",
     tags: ["ARCHITECTUUR", "SCHAALBAARHEID", "STANDAARDISATIE"],
     heroSummary: "We vertalen het HLD naar een concrete product- en beheerstandaard voor een herhaalbaar MSP-model.",
     
