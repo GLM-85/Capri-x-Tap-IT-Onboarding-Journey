@@ -128,6 +128,7 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
                         phase.managementPricingImpact ? { id: 'beheer-pricing', label: 'Beheer & pricing' } : null,
                         { id: 'deliverable', label: 'Deliverable' },
                         phase.accordMoment ? { id: 'akkoordmoment', label: 'Akkoordmoment' } : null,
+                        phase.summary ? { id: 'samenvatting', label: 'Samenvatting' } : null,
                     ].filter(Boolean).map((link: any) => (
                         <a
                            key={link.id}
@@ -322,6 +323,16 @@ export default function PhaseDetailClient({
                     {/* 1. DOEL */}
                     <ContentCard title="Doel van deze fase" id="doel" defaultOpen={true}>
                         <p className="text-[#202020]">{phase.goal}</p>
+                        {phase.goalBullets && (
+                            <ul className="space-y-2 mt-4">
+                                {phase.goalBullets.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                        <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                         {phase.id === 'fase-0' && (
                             <div className="mt-6 bg-[#E9ECEC] rounded-xl p-6 border-l-4 border-[#336F73]">
                                 <span className="text-xs font-bold uppercase tracking-widest text-[#336F73] block mb-2">
@@ -559,6 +570,13 @@ export default function PhaseDetailClient({
 
                     {/* 5. CHECKLIST (Dark Section) */}
                     <ChecklistSection checklist={phase.checklist} />
+
+                    {/* 6. SAMENVATTING */}
+                    {phase.summary && (
+                        <ContentCard title="Samenvatting" id="samenvatting" defaultOpen={true}>
+                            <p className="text-[#202020]">{phase.summary}</p>
+                        </ContentCard>
+                    )}
 
                     {/* 6. NEXT STEP (Floating Pill) */}
                     <div className="flex justify-end mt-12">

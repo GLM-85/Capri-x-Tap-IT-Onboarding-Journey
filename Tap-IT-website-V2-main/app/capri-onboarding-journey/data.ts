@@ -23,6 +23,7 @@ export interface PhaseData {
   
   // Content Sections
   goal: string;
+  goalBullets?: string[];
   activities: PhaseStep[];
   questions?: string[]; // Specific for Fase 0
   intakeDomains?: { title: string; description: string }[];
@@ -39,6 +40,7 @@ export interface PhaseData {
   mvpDefinition?: string;
   managementPricingImpact?: string[];
   accordMoment?: string;
+  summary?: string;
   
   deliverables: string[];
   
@@ -371,36 +373,56 @@ export const phases: PhaseData[] = [
     id: "fase-5",
     slug: "fase-5",
     number: 5,
-    title: "Evaluatie & Standaardisatie",
-    shortDescription: "Leren, verbeteren en borgen",
-    overviewDecision: "Tap-IT beslist na evaluatie welke verbeteringen worden geborgd; deze fase verankert leren en standaardisatie.",
+    title: "Evaluatie, Borging & Beheer",
+    shortDescription: "Overgang naar steady-state beheer en verantwoordelijkheden",
+    overviewDecision: "Afspraken worden definitief vastgelegd en beheer start structureel volgens afgesproken kaders.",
     tags: ["EVALUATIE", "OPTIMALISATIE", "BORGING"],
-    heroSummary: "Na de livegang stopt het niet. We evalueren het proces en het resultaat. De lessen verwerken we in de standaard voor de toekomst.",
+    heroSummary: "Na livegang wordt de samenwerking structureel ingericht. We leggen vast wat werkt, wat geborgd is en hoe beheer, security en verantwoordelijkheden er vanaf nu uitzien.",
     
-    goal: "Borgen van kwaliteit en continu verbeteren van het MSP-ecosysteem op basis van praktijkervaring. Na deze fase weet Capri exact welke verbeteringen structureel worden geborgd in beheer en standaard.",
+    goal: "Het definitief vastleggen van beheer-, security- en samenwerkingsafspraken. We zorgen dat de werkplek niet alleen werkt, maar ook beheersbaar, veilig en schaalbaar blijft — zonder afhankelijk te zijn van individuen.",
+    goalBullets: [
+      "Continuïteit en voorspelbaarheid",
+      "Heldere verantwoordelijkheden",
+      "Minder risico bij groei, partnerwissels of exit"
+    ],
     
     activities: [
       {
-        title: "Projectevaluatie",
-        content: ["Wat ging goed? Wat kan beter? Feedback ophalen van gebruikers en stakeholders."],
-        callout: "We leren van elke stap om de dienstverlening te verbeteren."
+        title: "Beheer- & Supportmodel vastleggen",
+        content: [
+          "Wij definiëren en borgen: wat valt onder standaard beheer, wat is incidenteel of meerwerk, fair-use grenzen (bijv. changes per maand) en escalatie- en contactstructuur.",
+          "Dit voorkomt onduidelijkheid, ad-hoc werk en verwachtingsverschillen."
+        ]
       },
       {
-        title: "Update Blueprint",
-        content: ["Verwerken van lessons learned in de MSP Blueprint v1.1."]
+        title: "Security & Monitoring definitief inrichten",
+        content: [
+          "We leggen vast: wat is een security-incident, welke monitoring actief is, welke alerts worden opgevolgd en verwachtingen rondom beschikbaarheid (kantoortijden vs 24/7).",
+          "Keuze wordt expliciet gemaakt: TAP-IT SOC / monitoring óf vaste securitypartner. Capri weet exact wat “veilig” betekent — en wat niet."
+        ]
       },
       {
-        title: "Start Regulier Beheer",
-        content: ["Inregeling in reguliere beheerprocessen en planning van QBRs."]
+        title: "Standaard borgen voor de toekomst",
+        content: [
+          "De gekozen inrichting wordt vast onderdeel van de Tap-IT standaard.",
+          "Verbeteringen worden gecontroleerd doorgevoerd.",
+          "Geen wildgroei of uitzonderingen per klant. Dit beschermt kwaliteit, schaalbaarheid én snelheid."
+        ]
       }
     ],
     
-    deliverables: ["Evaluatieverslag", "Tap-IT MSP Blueprint v1.1"],
+    deliverables: [
+      "Evaluatie- & borgingsdocument",
+      "Definitieve beheer- en supportafspraken",
+      "Security- & monitoringafspraken",
+      "Aangescherpte Tap-IT standaard (input voor volgende klanten)"
+    ],
     
     checklist: {
-      needs: ["Input Capri: feedback", "Input Capri: deelname evaluatiesessie"],
-      roles: ["Management", "Projectteam"],
-      decisions: ["Tap-IT besluit: verbeterpunten vastgesteld"]
-    }
+      needs: ["Feedback op samenwerking en beheer", "Akkoord op support- en securityafspraken"],
+      roles: ["Capri management", "TAP-IT service / architectuur"],
+      decisions: ["Beheer- en securitymodel vastgesteld", "Samenwerking over naar steady-state"]
+    },
+    summary: "We leggen vast hoe Capri’s IT structureel beheerd, beveiligd en ondersteund wordt — zonder verrassingen, afhankelijkheden of losse eindjes."
   }
 ];
