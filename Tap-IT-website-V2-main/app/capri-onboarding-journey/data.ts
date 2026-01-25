@@ -21,6 +21,7 @@ export interface PhaseData {
   tags: string[]; // [Doel, Deliverable, Go/No-Go]
   heroLead?: string;
   heroSummary: string;
+  phaseIndicatorNote?: string;
   
   // Content Sections
   goal: string;
@@ -293,47 +294,61 @@ export const phases: PhaseData[] = [
     id: "fase-3",
     slug: "fase-3",
     number: 3,
-    title: "Intern Ontwerp & Validatie",
-    shortDescription: "Van architectuurrichting naar een gevalideerde, beheersbare standaard.",
-    overviewDecision: "TAP-IT bepaalt het definitieve ontwerp; Capri valideert toepasbaarheid en impact. Zonder akkoord geen uitrol.",
+    title: "Intern Ontwerp & Architectuurkeuzes",
+    shortDescription: "TAP-IT vertaalt de gekozen architectuurrichting naar een intern ontwerp waarin schaalbaarheid, security en beheersbaarheid structureel zijn vastgelegd.",
+    overviewDecision: "TAP-IT bepaalt het definitieve ontwerp, Capri valideert toepasbaarheid en impact. Zonder akkoord geen uitrol.",
     tags: ["DETAILONTWERP", "VALIDATIE", "PROOF OF CONCEPT"],
-    heroSummary: "TAP-IT vertaalt de architectuurrichting naar een intern ontwerp dat beheersbaar en uitvoerbaar is.",
+    heroSummary: "TAP-IT vertaalt de gekozen architectuurrichting naar een intern ontwerp waarin schaalbaarheid, security en beheersbaarheid structureel zijn vastgelegd.",
+    phaseIndicatorNote: "Deze fase is primair intern gericht. TAP-IT legt hier de architecturale basis vast.",
     
-    goal: "In deze fase vertaalt TAP-IT de gekozen architectuurrichting naar een concreet, intern ontworpen werkplek-ontwerp. Capri valideert de uitkomst op toepasbaarheid en impact, niet op technische keuzes.",
+    goal: "In deze fase stelt TAP-IT het interne ontwerp vast dat als basis dient voor implementatie en beheer. De focus ligt op het maken van expliciete architectuurkeuzes die passen bij de context en groeiplannen van Capri. Capri valideert de uitkomst op toepasbaarheid en impact, niet op technische detaillering.",
+    goalBullets: [
+      "passen bij de context en groeiplannen van Capri",
+      "voldoen aan security- en compliance-vereisten",
+      "beheersbaar en herhaalbaar zijn in de praktijk"
+    ],
     
     activities: [
       {
-        title: "Functionele verdieping (Capri)",
-        content: ["We toetsen de gekozen richting aan concrete werksituaties en groeiscenario’s, zonder technische invulling."]
+        title: "Functionele verdieping met Capri",
+        content: ["Verdieping van werkprocessen, gebruikersscenario’s en groeiverwachtingen, zonder technische keuzes te bespreken."]
       },
       {
         title: "Interne TAP-IT architectuursessie (zonder klant)",
-        content: ["TAP-IT werkt het standaard werkplekontwerp uit op basis van schaalbaarheid, security en beheerbaarheid."]
+        content: ["TAP-IT bepaalt de definitieve architectuurkeuzes op basis van security, schaalbaarheid, beheersbaarheid en lange-termijn toepasbaarheid."]
       },
       {
-        title: "Low Level Design (LLD)",
-        content: ["Vastleggen van het definitieve ontwerp als interne standaard voor Capri."]
+        title: "Netwerk meenemen als integraal onderdeel van het ontwerp",
+        content: ["Netwerkvereisten worden beoordeeld als onderdeel van de totale werkplekoplossing. De exacte inrichting wordt later vastgesteld."]
+      },
+      {
+        title: "Uitwerken intern standaardontwerp (LLD-niveau)",
+        content: ["Vastleggen van configuraties, standaarden en randvoorwaarden die nodig zijn voor implementatie en beheer."]
       },
       {
         title: "Proof of Concept (validatie, geen experiment)",
-        content: ["We tonen de werking van de standaard om aannames te bevestigen en risico’s vóór implementatie weg te nemen."]
+        content: ["Toetsen van de werking en samenhang van het ontwerp om risico’s vóór implementatie te reduceren."]
       },
       {
         title: "Validatie met Capri",
-        content: ["Capri geeft feedback op gebruik, impact en begrijpelijkheid, TAP-IT bewaakt het ontwerp."]
+        content: ["Capri valideert het ontwerp op werkbaarheid, impact en begrijpelijkheid. TAP-IT blijft eigenaar van het ontwerp."]
       }
     ],
     
     deliverables: [
-      "Gevalideerd Low Level Design (LLD)",
-      "Bevestigde werkplek-standaard voor implementatie",
-      "Go-besluit voor uitrol"
+      "Gevalideerd intern ontwerp (LLD-niveau)",
+      "Inclusief vastgelegde architectuurkeuzes, netwerkuitgangspunten en beheerprincipes."
     ],
     
     checklist: {
-      needs: ["Feedback op werking en impact", "Bevestiging dat dit past bij dagelijkse praktijk en groei"],
-      roles: ["Key users / vertegenwoordiging operations", "Projectverantwoordelijke Capri"],
-      decisions: ["Akkoord op definitief ontwerp", "Go / No-Go naar implementatie", "Akkoord op scope en randvoorwaarden", "Start implementatie (Fase 4)"]
+      needs: [],
+      roles: [],
+      decisions: [
+        "Werkbaarheid van het ontwerp voor dagelijkse operatie",
+        "Inzicht in impact op gebruikers en groei",
+        "Begrip van wat binnen en buiten scope valt",
+        "Akkoord op doorgang naar implementatie (Fase 4)"
+      ]
     },
     nextPhase: "fase-4"
   },

@@ -312,6 +312,11 @@ export default function PhaseDetailClient({
                                           FASE {p.number}
                                       </div>
                                   )}
+                                  {isCurrent && phase.phaseIndicatorNote && (
+                                      <div className="absolute top-full mt-6 text-[10px] font-medium text-[#A0A0A0] whitespace-nowrap">
+                                          {phase.phaseIndicatorNote}
+                                      </div>
+                                  )}
                               </Link>
                           )
                       })}
