@@ -81,7 +81,7 @@ const CapriOnboardingClient: React.FC = () => {
                  <span className="text-[#FF7650]">Onboarding Journey</span>
               </h1>
               <p className="text-xl md:text-3xl font-light opacity-90 max-w-3xl leading-normal mb-10 md:text-left mx-auto md:mx-0">
-                  Een gefaseerde aanpak waarin we Capri begeleiden naar een veilige, schaalbare en investeerbare IT-fundering — zonder snelheid of ondernemerschap te remmen.
+                  Een gefaseerde aanpak waarin we Capri begeleiden naar een veilige, schaalbare en investeerbare IT-fundering, zonder snelheid of ondernemerschap te remmen.
               </p>
            </div>
         </section>
@@ -222,15 +222,15 @@ const CapriOnboardingClient: React.FC = () => {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base">
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
-                            Beschermt groei zonder innovatie te vertragen — Operational resilience
+                            Beschermt groei zonder innovatie te vertragen, Operational resilience.
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
-                            Maakt risico’s expliciet vóór ze schade veroorzaken — Risk-adjusted value
+                            Maakt risico’s expliciet vóór ze schade veroorzaken, Risk-adjusted value.
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
-                            Ondersteunt professionalisering richting klanten, partners en investeerders — Enterprise compatibility
+                            Ondersteunt professionalisering richting klanten, partners en investeerders, Enterprise compatibility.
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>

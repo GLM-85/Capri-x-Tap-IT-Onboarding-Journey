@@ -123,13 +123,13 @@ export const phases: PhaseData[] = [
     id: "fase-1",
     slug: "fase-1",
     number: 1,
-    title: "Architectuurrichting & Scopebesluit",
-    shortDescription: "Beslisfase voor richting en scope van de moderne werkplek",
-    overviewDecision: "TAP-IT bepaalt de architectuurrichting, Capri valideert; zonder expliciet akkoord op scope en uitgangspunten start Fase 2 niet.",
+    title: "Architectuurrichting & Besluit op Hoofdlijnen",
+    shortDescription: "TAP-IT bepaalt de architectuurrichting en scope op hoofdlijnen. Capri valideert de business-impact en prioriteiten.",
+    overviewDecision: "TAP-IT bepaalt de architectuurrichting op hoofdlijnen, Capri valideert. Zonder akkoord start Fase 2 niet.",
     tags: ["STRATEGIE", "WERKPLEK", "SECURITY"],
-    heroSummary: "TAP-IT bepaalt de architectuurrichting en scope, Capri valideert de business-impact.",
+    heroSummary: "TAP-IT bepaalt de architectuurrichting en scope op hoofdlijnen. Capri valideert de business-impact en prioriteiten.",
     
-    goal: "In deze fase bepaalt TAP-IT de architectuurrichting voor de moderne werkplek, gebaseerd op de intake uit Fase 0. Capri valideert de richting vanuit business-impact, risico en groeiperspectief. Deze fase eindigt met een expliciet akkoord op scope en uitgangspunten.",
+    goal: "In deze fase stelt TAP-IT de architectuurrichting vast op hoofdlijnen. Dit betekent: keuzes over principes, scope en uitgangspunten, nog zonder technische detaillering. Het doel is om één duidelijke, gedragen richting vast te leggen waarop in Fase 2 (Blueprint) en Fase 3 (LLD & PoC) verder gebouwd kan worden.",
     
     activities: [
       {
@@ -138,15 +138,19 @@ export const phases: PhaseData[] = [
       },
       {
         title: "Scope afbakenen",
-        content: ["Afbakening van de Managed Modern Workplace (scope)."]
+        content: ["Afbakenen van de Managed Modern Workplace (wat valt er wel / niet onder)."]
       },
       {
-        title: "Afhankelijkheden kaderen",
-        content: ["Kaderen van afhankelijkheden (bijv. networking, hardware, partners)."]
+        title: "Networking positioneren",
+        content: ["Positioneren van networking als integraal onderdeel van de totale oplossing, evaluatie volgt later."]
       },
       {
-        title: "Security en groei borgen",
-        content: ["Vastleggen van expliciete uitgangspunten voor security en groei."]
+        title: "Security, groei en compliance",
+        content: ["Vastleggen van uitgangspunten voor security, groei en compliance."]
+      },
+      {
+        title: "Richtlijnen voor vervolgfasen",
+        content: ["Vertalen van Fase-0 inzichten naar duidelijke richtlijnen voor vervolgfasen."]
       }
     ],
 
@@ -154,39 +158,40 @@ export const phases: PhaseData[] = [
       {
         heading: "TAP-IT",
         bullets: [
-          "Bepaalt architectuurkeuzes",
-          "Borgt security, schaalbaarheid en beheerbaarheid",
-          "Maakt expliciet wat wél en niet wordt geleverd"
+          "Bepaalt de architectuurrichting en scope op hoofdlijnen",
+          "Bewaakt schaalbaarheid, security en beheersbaarheid",
+          "Maakt expliciete keuzes (geen open eindes)"
         ]
       },
       {
-        heading: "Capri",
+        heading: "CAPRI",
         bullets: [
-          "Levert context en business-prioriteiten",
-          "Valideert richting en uitgangspunten",
-          "Beslist niet over technische implementatie"
+          "Levert context, input en prioriteiten",
+          "Valideert business-impact en praktische haalbaarheid",
+          "Geeft akkoord op richting, niet op technische invulling"
         ]
       }
     ],
     rolesAnalogy: "Net zoals een automonteur bepaalt welk type remblok veilig is, bepaalt TAP-IT welke IT-architectuur passend is.",
     networkingScope: [
-      "Networking is geen standaard onderdeel van de Managed Modern Workplace.",
-      "TAP-IT levert high-level advies.",
-      "Afstemming met netwerkpartners indien nodig.",
-      "Uitvoering van complexe netwerken valt buiten scope of loopt via gespecialiseerde partners."
+      "Networking wordt in deze fase inhoudelijk meegenomen als onderdeel van de totale oplossing.",
+      "In Fase 1 bepalen we welke netwerkaspecten relevant zijn voor de architectuurrichting.",
+      "In Fase 1 bepalen we welke afhankelijkheden en risico’s er zijn.",
+      "Concrete inrichting en uitvoeringskeuzes volgen pas in latere fases."
     ],
-    accordMoment: "Go / No-Go moment — zonder expliciet akkoord op architectuurrichting en scope start Fase 2 niet.",
+    accordMoment: "Go / No-Go moment. Capri geeft akkoord op de gekozen architectuurrichting, de scope op hoofdlijnen en wat in de volgende fases verder wordt uitgewerkt. Zonder akkoord op deze punten start Fase 2 niet.",
     
     deliverables: [
-      "Architectuurrichting (op hoofdlijnen)",
-      "Scope-afbakening: wat zit wel / niet in de standaard",
-      "Vastgelegde uitgangspunten voor Fase 2"
+      "Architectuurrichting op hoofdlijnen",
+      "Afgebakende scope van de Managed Modern Workplace",
+      "Vastgelegde uitgangspunten voor security, schaalbaarheid en beheer",
+      "Duidelijke randvoorwaarden voor Fase 2 en 3"
     ],
     
     checklist: {
-      needs: ["Feedback op business-impact, risico en groeiperspectief", "Bevestiging van scope en uitgangspunten"],
-      roles: ["Capri management / partners", "TAP-IT architect"],
-      decisions: ["Akkoord op architectuurrichting", "Akkoord op scope en uitgangspunten", "Go / No-Go moment: zonder akkoord start Fase 2 niet"]
+      needs: ["Inhoudelijke feedback op voorgestelde richting", "Prioriteiten vanuit business en groei"],
+      roles: ["Capri management", "TAP-IT architect / solution lead"],
+      decisions: ["Akkoord op architectuurrichting", "Akkoord op scope op hoofdlijnen", "Go / No-Go naar Fase 2"]
     },
     nextPhase: "fase-2"
   },
@@ -256,7 +261,7 @@ export const phases: PhaseData[] = [
       "Prijsrichting",
       "Daarom worden hier expliciet grenzen gesteld."
     ],
-    accordMoment: "Go / No-Go moment — akkoord op productdefinitie en MVP is vereist vóór start van Fase 3.",
+    accordMoment: "Go / No-Go moment, akkoord op productdefinitie en MVP is vereist vóór start van Fase 3.",
     
     deliverables: [
       "Vastgelegde Managed Modern Workplace-standaard",
@@ -287,7 +292,7 @@ export const phases: PhaseData[] = [
     activities: [
       {
         title: "Functionele verdieping (Capri)",
-        content: ["We toetsen de gekozen richting aan concrete werksituaties en groeiscenario’s — zonder technische invulling."]
+        content: ["We toetsen de gekozen richting aan concrete werksituaties en groeiscenario’s, zonder technische invulling."]
       },
       {
         title: "Interne TAP-IT architectuursessie (zonder klant)",
@@ -303,7 +308,7 @@ export const phases: PhaseData[] = [
       },
       {
         title: "Validatie met Capri",
-        content: ["Capri geeft feedback op gebruik, impact en begrijpelijkheid — TAP-IT bewaakt het ontwerp."]
+        content: ["Capri geeft feedback op gebruik, impact en begrijpelijkheid, TAP-IT bewaakt het ontwerp."]
       }
     ],
     
@@ -335,7 +340,7 @@ export const phases: PhaseData[] = [
     activities: [
       {
         title: "Implementatie van de standaard",
-        content: ["Uitrol van de werkplek zoals vastgesteld in Fase 3 — zonder scope-uitbreiding."]
+        content: ["Uitrol van de werkplek zoals vastgesteld in Fase 3, zonder scope-uitbreiding."]
       },
       {
         title: "Migratie & onboarding",
@@ -359,7 +364,7 @@ export const phases: PhaseData[] = [
       "Werkende productieomgeving",
       "Gedocumenteerde configuratie",
       "Formele acceptatie & overdracht",
-      "Decharge: opgeleverd conform afgesproken scope, overgedragen naar beheer, MVP is wat is afgesproken — geen maatwerk"
+      "Decharge: opgeleverd conform afgesproken scope, overgedragen naar beheer, MVP is wat is afgesproken, geen maatwerk"
     ],
     
     checklist: {
@@ -379,7 +384,7 @@ export const phases: PhaseData[] = [
     tags: ["EVALUATIE", "OPTIMALISATIE", "BORGING"],
     heroSummary: "Na livegang wordt de samenwerking structureel ingericht. We leggen vast wat werkt, wat geborgd is en hoe beheer, security en verantwoordelijkheden er vanaf nu uitzien.",
     
-    goal: "Het definitief vastleggen van beheer-, security- en samenwerkingsafspraken. We zorgen dat de werkplek niet alleen werkt, maar ook beheersbaar, veilig en schaalbaar blijft — zonder afhankelijk te zijn van individuen.",
+    goal: "Het definitief vastleggen van beheer-, security- en samenwerkingsafspraken. We zorgen dat de werkplek niet alleen werkt, maar ook beheersbaar, veilig en schaalbaar blijft, zonder afhankelijk te zijn van individuen.",
     goalBullets: [
       "Continuïteit en voorspelbaarheid",
       "Heldere verantwoordelijkheden",
@@ -398,7 +403,7 @@ export const phases: PhaseData[] = [
         title: "Security & Monitoring definitief inrichten",
         content: [
           "We leggen vast: wat is een security-incident, welke monitoring actief is, welke alerts worden opgevolgd en verwachtingen rondom beschikbaarheid (kantoortijden vs 24/7).",
-          "Keuze wordt expliciet gemaakt: TAP-IT SOC / monitoring óf vaste securitypartner. Capri weet exact wat “veilig” betekent — en wat niet."
+          "Keuze wordt expliciet gemaakt: TAP-IT SOC / monitoring óf vaste securitypartner. Capri weet exact wat “veilig” betekent, en wat niet."
         ]
       },
       {
@@ -423,6 +428,6 @@ export const phases: PhaseData[] = [
       roles: ["Capri management", "TAP-IT service / architectuur"],
       decisions: ["Beheer- en securitymodel vastgesteld", "Samenwerking over naar steady-state"]
     },
-    summary: "We leggen vast hoe Capri’s IT structureel beheerd, beveiligd en ondersteund wordt — zonder verrassingen, afhankelijkheden of losse eindjes."
+    summary: "We leggen vast hoe Capri’s IT structureel beheerd, beveiligd en ondersteund wordt, zonder verrassingen, afhankelijkheden of losse eindjes."
   }
 ];

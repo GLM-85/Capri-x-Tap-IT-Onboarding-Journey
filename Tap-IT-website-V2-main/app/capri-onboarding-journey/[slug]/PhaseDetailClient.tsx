@@ -122,7 +122,7 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
                         { id: 'activiteiten', label: 'Wat doen we?' },
                         phase.intakeDomains ? { id: 'intake-per-domein', label: 'Intake per domein' } : null,
                         phase.questions ? { id: 'vragen', label: 'Kernvragen' } : null,
-                        phase.networkingScope ? { id: 'networking-kader', label: 'Networking — kader' } : null,
+                        phase.networkingScope ? { id: 'networking-kader', label: 'Networking, positionering' } : null,
                         phase.managedWorkplace ? { id: 'managed-workplace', label: 'Managed Modern Workplace' } : null,
                         phase.mvpDefinition ? { id: 'mvp-definitie', label: 'MVP-definitie' } : null,
                         phase.managementPricingImpact ? { id: 'beheer-pricing', label: 'Beheer & pricing' } : null,
@@ -439,7 +439,7 @@ export default function PhaseDetailClient({
 
                     {/* 3b. NETWORKING KADER */}
                     {phase.networkingScope && (
-                        <ContentCard title="Networking — expliciet kader" id="networking-kader" defaultOpen={true}>
+                        <ContentCard title="Networking, positionering in deze fase" id="networking-kader" defaultOpen={true}>
                             <ul className="space-y-3">
                                 {phase.networkingScope.map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-[#202020]">
@@ -453,7 +453,7 @@ export default function PhaseDetailClient({
 
                     {/* 3c. MANAGED MODERN WORKPLACE */}
                     {phase.managedWorkplace && (
-                        <ContentCard title="Managed Modern Workplace — vaste structuur" id="managed-workplace" defaultOpen={true}>
+                        <ContentCard title="Managed Modern Workplace, vaste structuur" id="managed-workplace" defaultOpen={true}>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 {phase.managedWorkplace.map((section, i) => (
                                     <div key={i} className="bg-white rounded-xl border border-[#E1E9E6] p-5">
@@ -533,13 +533,6 @@ export default function PhaseDetailClient({
                                         {phase.deliverables[0]}
                                     </h3>
                                 </div>
-
-                                <p className="text-[#202020] mt-3">
-                                    Het High Level Design beschrijft de keuzes en uitgangspunten op hoofdlijnen: hoe jullie willen werken en welke afspraken daarbij horen.
-                                </p>
-                                <p className="text-[#202020] mt-2">
-                                    Capri gebruikt dit om intern af te stemmen en om richting te geven aan Fase 2 (Blueprint). Dit is nadrukkelijk geen bouw- of implementatieplan.
-                                </p>
 
                                 {phase.deliverables.length > 1 && (
                                     <ul className="space-y-3 mt-4">
