@@ -19,6 +19,7 @@ export interface PhaseData {
   shortDescription: string;
   overviewDecision: string;
   tags: string[]; // [Doel, Deliverable, Go/No-Go]
+  heroLead?: string;
   heroSummary: string;
   
   // Content Sections
@@ -38,7 +39,10 @@ export interface PhaseData {
     items: string[];
   }[];
   mvpDefinition?: string;
+  mvpBullets?: string[];
+  mvpClosing?: string;
   managementPricingImpact?: string[];
+  managementPricingNote?: string;
   accordMoment?: string;
   summary?: string;
   
@@ -199,30 +203,36 @@ export const phases: PhaseData[] = [
     id: "fase-2",
     slug: "fase-2",
     number: 2,
-    title: "Productdefinitie & MSP-Blueprint",
+    title: "Fase 2 – Productdefinitie & Standaard Blueprint",
     shortDescription: "Managed Modern Workplace-standaard als basis voor beheer",
     overviewDecision: "Akkoord op productdefinitie en MVP is vereist vóór start van Fase 3.",
     tags: ["ARCHITECTUUR", "SCHAALBAARHEID", "STANDAARDISATIE"],
-    heroSummary: "TAP-IT definieert de Managed Modern Workplace-standaard en het MVP.",
+    heroLead: "In deze fase bepaalt TAP-IT de definitieve Managed Modern Workplace-standaard die veilig, schaalbaar en beheersbaar is voor Capri.",
+    heroSummary: "Deze keuzes vormen het fundament voor implementatie, beheer en kosten. Capri valideert de richting, TAP-IT bepaalt de standaard.",
     
-    goal: "In deze fase vertaalt TAP-IT de gekozen architectuurrichting naar een concrete, herhaalbare Managed Modern Workplace-standaard. Deze standaard vormt het fundament voor beheer, support en pricing.",
+    goal: "Het vaststellen van één duidelijke, herhaalbare en beheersbare Managed Modern Workplace-standaard die:",
+    goalBullets: [
+      "past bij de huidige én toekomstige groei van Capri",
+      "voldoet aan security- en compliance-eisen",
+      "voorspelbaar te beheren en te prijzen is"
+    ],
     
     activities: [
       {
-        title: "Managed Modern Workplace-standaard definiëren",
-        content: ["Definiëren van de Managed Modern Workplace-standaard."]
+        title: "Vaststellen Managed Modern Workplace-standaard",
+        content: ["TAP-IT bepaalt welke componenten standaard onderdeel zijn van de werkplek en hoe deze technisch en organisatorisch samenhangen."]
       },
       {
-        title: "MVP vaststellen",
-        content: ["Vaststellen van het Minimum Viable Product (MVP)."]
+        title: "Afbakening van het Minimum Viable Product (MVP)",
+        content: ["We bepalen wat minimaal nodig is om veilig, professioneel en schaalbaar te werken, zonder overcomplexiteit."]
       },
       {
-        title: "Add-ons bepalen",
-        content: ["Bepalen van optionele uitbreidingen (add-ons)."]
+        title: "Inzichtelijk maken van beheer- en kostenimpact",
+        content: ["Elke keuze wordt beoordeeld op impact op dagelijks beheer, supportbelasting, security-verantwoordelijkheden en voorspelbaarheid van kosten."]
       },
       {
-        title: "Beheer en kosten inzichtelijk maken",
-        content: ["Inzichtelijk maken van impact op beheer en kosten."]
+        title: "Netwerk meenemen als integraal onderdeel",
+        content: ["Netwerk (wifi, firewall, connectiviteit) wordt inhoudelijk meegenomen in de totale oplossing, maar nog niet definitief ingericht. Definitieve invulling volgt op basis van context en schaal."]
       }
     ],
 
@@ -230,50 +240,52 @@ export const phases: PhaseData[] = [
       {
         heading: "Standaard inbegrepen",
         items: [
-          "Microsoft Entra ID (identity & access)",
+          "Microsoft Entra ID (identiteit & toegang)",
           "Intune baseline policies",
-          "Rollen & rechten",
-          "Endpoint security",
-          "Basis collaboration (Teams / SharePoint)"
+          "Rollen & rechten (RBAC)",
+          "Endpoint security (device-bescherming)",
+          "Basis compliance & logging",
+          "Lifecycle: onboarding & offboarding"
         ]
       },
       {
-        heading: "Optioneel (add-ons)",
+        heading: "Onderdeel van totaaloplossing (nog niet definitief ingericht)",
         items: [
-          "Mobile device support",
-          "Hardware & lifecycle management",
-          "Networking (via partner of apart traject)"
+          "Netwerk (wifi, firewall, routing)",
+          "Apparatuur & device-keuzes"
         ]
       },
       {
-        heading: "Niet inbegrepen",
+        heading: "Niet onderdeel van deze standaard",
         items: [
-          "On-prem infrastructuur",
-          "Klantspecifieke maatwerkarchitecturen",
-          "Niet-standaard security-constructies"
+          "On-premise infrastructuur",
+          "Klantspecifieke maatwerkoplossingen"
         ]
       }
     ],
-    mvpDefinition: "Het MVP is de minimale, veilige en schaalbare werkplekstandaard die TAP-IT beheersbaar kan leveren. Afwijkingen van het MVP vergroten complexiteit, beheerlast en kosten.",
-    managementPricingImpact: [
-      "Beheercomplexiteit",
-      "Supportmodel",
-      "Prijsrichting",
-      "Daarom worden hier expliciet grenzen gesteld."
+    mvpDefinition: "Het MVP is de minimale, volwassen werkplekstandaard waarmee Capri:",
+    mvpBullets: [
+      "veilig kan werken",
+      "professioneel overkomt richting klanten en partners",
+      "zonder IT-reset kan doorgroeien"
     ],
-    accordMoment: "Go / No-Go moment, akkoord op productdefinitie en MVP is vereist vóór start van Fase 3.",
+    mvpClosing: "Alles buiten het MVP verhoogt complexiteit en wordt bewust later overwogen.",
+    managementPricingImpact: [
+      "Impact op dagelijks beheer en support",
+      "Benodigde rollen en verantwoordelijkheden",
+      "Effect op kostenstructuur en schaalbaarheid"
+    ],
+    managementPricingNote: "Deze inzichten vormen de basis voor realistische verwachtingen richting implementatie en beheer.",
+    accordMoment: "Go / No-Go moment. Capri geeft akkoord op de vastgestelde standaard, de MVP-afbakening en de impact op beheer en kosten. Zonder akkoord start Fase 3 niet.",
     
     deliverables: [
-      "Vastgelegde Managed Modern Workplace-standaard",
-      "Duidelijke MVP-afbakening",
-      "Overzicht standaard vs add-ons",
-      "Input voor LLD & implementatie"
+      "Vastgestelde Managed Modern Workplace-standaard inclusief MVP-afbakening"
     ],
     
     checklist: {
-      needs: ["Validatie van business-fit", "Inzicht in gewenste flexibiliteit"],
-      roles: ["TAP-IT engineers / architecten", "Eventuele externe experts"],
-      decisions: ["Akkoord op productdefinitie", "Akkoord op MVP", "Go / No-Go moment: akkoord vereist vóór start Fase 3"]
+      needs: ["Validatie van uitgangspunten", "Feedback op voorgestelde standaard"],
+      roles: ["Management", "Besluitvormer(s)"],
+      decisions: ["Akkoord op standaard & MVP", "Go / No-Go naar Fase 3"]
     },
     nextPhase: "fase-3"
   },

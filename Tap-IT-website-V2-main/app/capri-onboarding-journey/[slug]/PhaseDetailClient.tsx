@@ -256,9 +256,20 @@ export default function PhaseDetailClient({
                         <h1 className="text-4xl md:text-7xl font-black font-sans uppercase leading-[0.9] mb-6">
                             {phase.title}
                         </h1>
-                        <p className="text-lg md:text-2xl font-bold text-white/90 leading-relaxed max-w-3xl mb-8">
-                            {phase.heroSummary}
-                        </p>
+                        {phase.heroLead ? (
+                            <div className="max-w-3xl mb-8 space-y-4">
+                                <p className="text-lg md:text-2xl font-bold text-white/90 leading-relaxed">
+                                    {phase.heroLead}
+                                </p>
+                                <p className="text-base md:text-xl text-white/80 leading-relaxed">
+                                    {phase.heroSummary}
+                                </p>
+                            </div>
+                        ) : (
+                            <p className="text-lg md:text-2xl font-bold text-white/90 leading-relaxed max-w-3xl mb-8">
+                                {phase.heroSummary}
+                            </p>
+                        )}
                         
                         {/* Tags as Pills (Dark Grey) */}
                         <div className="flex flex-wrap gap-3">
@@ -453,7 +464,7 @@ export default function PhaseDetailClient({
 
                     {/* 3c. MANAGED MODERN WORKPLACE */}
                     {phase.managedWorkplace && (
-                        <ContentCard title="Managed Modern Workplace, vaste structuur" id="managed-workplace" defaultOpen={true}>
+                        <ContentCard title="Managed Modern Workplace – Standaard Opbouw" id="managed-workplace" defaultOpen={true}>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 {phase.managedWorkplace.map((section, i) => (
                                     <div key={i} className="bg-white rounded-xl border border-[#E1E9E6] p-5">
@@ -478,6 +489,19 @@ export default function PhaseDetailClient({
                     {phase.mvpDefinition && (
                         <ContentCard title="MVP-definitie" id="mvp-definitie" defaultOpen={true}>
                             <p className="text-[#202020]">{phase.mvpDefinition}</p>
+                            {phase.mvpBullets && (
+                                <ul className="space-y-2 mt-3">
+                                    {phase.mvpBullets.map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                            <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {phase.mvpClosing && (
+                                <p className="text-[#202020] mt-3">{phase.mvpClosing}</p>
+                            )}
                         </ContentCard>
                     )}
 
@@ -492,6 +516,9 @@ export default function PhaseDetailClient({
                                     </li>
                                 ))}
                             </ul>
+                            {phase.managementPricingNote && (
+                                <p className="text-[#202020] mt-4">{phase.managementPricingNote}</p>
+                            )}
                         </ContentCard>
                     )}
 
