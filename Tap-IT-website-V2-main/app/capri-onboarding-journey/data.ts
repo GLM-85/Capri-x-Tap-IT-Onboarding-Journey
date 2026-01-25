@@ -274,32 +274,47 @@ export const phases: PhaseData[] = [
     id: "fase-3",
     slug: "fase-3",
     number: 3,
-    title: "LLD & Proof of Concept",
-    shortDescription: "Detailontwerp en technische validatie",
-    overviewDecision: "Tap-IT en Capri beslissen na PoC/LLD of configuraties productie-klaar zijn; deze fase elimineert technische risico’s vóór livegang.",
+    title: "Intern Ontwerp & Validatie",
+    shortDescription: "Van architectuurrichting naar een gevalideerde, beheersbare standaard.",
+    overviewDecision: "TAP-IT bepaalt het definitieve ontwerp; Capri valideert toepasbaarheid en impact. Zonder akkoord geen uitrol.",
     tags: ["DETAILONTWERP", "VALIDATIE", "PROOF OF CONCEPT"],
-    heroSummary: "Papier is geduldig, techniek niet. We werken details uit tot op instelling-niveau en testen risicovolle onderdelen in een veilige omgeving.",
+    heroSummary: "TAP-IT vertaalt de architectuurrichting naar een intern ontwerp dat beheersbaar en uitvoerbaar is.",
     
-    goal: "Laatste technische risicopoort vóór productie: we elimineren technische risico's en maken de configuratie definitief voordat we live gaan. Na deze fase weet Capri exact dat de configuraties werken en kan het definitieve besluit tot implementatie worden genomen.",
+    goal: "In deze fase vertaalt TAP-IT de gekozen architectuurrichting naar een concreet, intern ontworpen werkplek-ontwerp. Capri valideert de uitkomst op toepasbaarheid en impact, niet op technische keuzes.",
     
     activities: [
       {
-        title: "Low Level Design (LLD)",
-        content: ["Documentatie & configuratie: exacte configuraties, naming conventions en policy settings vastleggen."],
-        callout: "We zorgen dat alles werkt zoals bedacht voordat we gebruikers raken."
+        title: "Functionele verdieping (Capri)",
+        content: ["We toetsen de gekozen richting aan concrete werksituaties en groeiscenario’s — zonder technische invulling."]
       },
       {
-        title: "Proof of Concept (PoC)",
-        content: ["Praktijkvalidatie & tests: bouw van een testomgeving en testen van kritische applicaties."]
+        title: "Interne TAP-IT architectuursessie (zonder klant)",
+        content: ["TAP-IT werkt het standaard werkplekontwerp uit op basis van schaalbaarheid, security en beheerbaarheid."]
+      },
+      {
+        title: "Low Level Design (LLD)",
+        content: ["Vastleggen van het definitieve ontwerp als interne standaard voor Capri."]
+      },
+      {
+        title: "Proof of Concept (validatie, geen experiment)",
+        content: ["We tonen de werking van de standaard om aannames te bevestigen en risico’s vóór implementatie weg te nemen."]
+      },
+      {
+        title: "Validatie met Capri",
+        content: ["Capri geeft feedback op gebruik, impact en begrijpelijkheid — TAP-IT bewaakt het ontwerp."]
       }
     ],
     
-    deliverables: ["Capri Low Level Design (LLD) – productie-klare configuraties en implementatiestandaarden, gevalideerd via Proof of Concept."],
+    deliverables: [
+      "Gevalideerd Low Level Design (LLD)",
+      "Bevestigde werkplek-standaard voor implementatie",
+      "Go-besluit voor uitrol"
+    ],
     
     checklist: {
-      needs: ["Input Capri: testgebruikers / testdevices", "Input Capri: applicatie-eigenaren voor tests"],
-      roles: ["Key Users (Testers)", "Tap-IT Engineers"],
-      decisions: ["Tap-IT besluit: PoC geaccepteerd op basis van tests", "Definitief besluit Tap-IT + Capri: Go voor migratie/implementatie"]
+      needs: ["Feedback op werking en impact", "Bevestiging dat dit past bij dagelijkse praktijk en groei"],
+      roles: ["Key users / vertegenwoordiging operations", "Projectverantwoordelijke Capri"],
+      decisions: ["Akkoord op definitief ontwerp", "Go / No-Go naar implementatie", "Akkoord op scope en randvoorwaarden", "Start implementatie (Fase 4)"]
     },
     nextPhase: "fase-4"
   },
@@ -307,36 +322,48 @@ export const phases: PhaseData[] = [
     id: "fase-4",
     slug: "fase-4",
     number: 4,
-    title: "Implementatie & Decharge",
-    shortDescription: "Bouw, migratie en oplevering",
-    overviewDecision: "Capri beslist bij decharge over acceptatie; deze fase zorgt voor gecontroleerde migratie en overdracht naar beheer.",
+    title: "Implementatie & Overdracht",
+    shortDescription: "Gecontroleerde livegang op basis van een vastgestelde standaard.",
+    overviewDecision: "Formele acceptatie en start beheerfase op basis van afgesproken scope.",
     tags: ["UITROL", "MIGRATIE", "LIVEGANG"],
-    heroSummary: "De daadwerkelijke uitrol. We bouwen de productieomgeving, migreren data en gebruikers, en zorgen voor een soepele overgang.",
+    heroSummary: "De vastgestelde werkplek-standaard wordt gecontroleerd uitgerold en formeel overgedragen.",
     
-    goal: "Een vlekkeloze transitie naar de nieuwe moderne werkplek voor alle medewerkers, met minimale impact op de business. Na deze fase weet Capri exact dat de productie-omgeving stabiel draait en is de definitieve acceptatie afgerond.",
+    goal: "In deze fase wordt de vastgestelde werkplek-standaard gecontroleerd uitgerold. De productieomgeving wordt ingericht, getest en formeel overgedragen aan beheer.",
     
     activities: [
       {
-        title: "Bouw & Configuratie",
-        content: ["Inrichten tenants en portals conform LLD. Strikte uitvoering van het ontwerp."],
-        callout: "De nieuwe omgeving wordt gebruiksklaar gemaakt."
+        title: "Implementatie van de standaard",
+        content: ["Uitrol van de werkplek zoals vastgesteld in Fase 3 — zonder scope-uitbreiding."]
       },
       {
-        title: "Migratie & Onboarding",
-        content: ["Migreren van mail en data, en begeleiding van gebruikers tijdens de livegang."]
+        title: "Migratie & onboarding",
+        content: ["Overzetten van gebruikers, data en instellingen met minimale verstoring."]
       },
       {
-        title: "Decharge",
-        content: ["Formele oplevering, acceptatie en overdracht naar beheer."]
+        title: "Afstemming afhankelijkheden",
+        content: ["Duidelijke afbakening tussen TAP-IT verantwoordelijkheden, eventuele partners en buiten scope."]
+      },
+      {
+        title: "Decharge & overdracht naar beheer",
+        content: ["Formele acceptatie en start van beheer volgens afgesproken kaders."]
+      },
+      {
+        title: "Verwachtingsmanagement",
+        content: ["Livegang is geen eindpunt, maar het begin van gecontroleerd beheer en verdere optimalisatie."]
       }
     ],
     
-    deliverables: ["Werkende productieomgeving", "Decharge document"],
+    deliverables: [
+      "Werkende productieomgeving",
+      "Gedocumenteerde configuratie",
+      "Formele acceptatie & overdracht",
+      "Decharge: opgeleverd conform afgesproken scope, overgedragen naar beheer, MVP is wat is afgesproken — geen maatwerk"
+    ],
     
     checklist: {
-      needs: ["Input Capri: interne communicatie naar medewerkers", "Input Capri: beschikbaarheid tijdens migratieweekend/dag"],
-      roles: ["Alle medewerkers", "Projectteam"],
-      decisions: ["Definitief besluit Capri: formele acceptatie (Decharge)"]
+      needs: ["Tijdige communicatie richting medewerkers", "Beschikbaarheid tijdens migratiemomenten"],
+      roles: ["Projectverantwoordelijke Capri", "TAP-IT projectteam"],
+      decisions: ["Formele acceptatie", "Start beheerfase"]
     },
     nextPhase: "fase-5"
   },
