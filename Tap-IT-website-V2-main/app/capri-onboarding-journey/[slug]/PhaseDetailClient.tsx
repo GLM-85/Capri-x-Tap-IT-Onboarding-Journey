@@ -253,7 +253,7 @@ export default function PhaseDetailClient({
                      
                      {/* Text Content */}
                      <div className="max-w-4xl pt-2">
-                        <h1 className="text-4xl md:text-7xl font-black font-sans uppercase leading-[0.9] mb-6">
+                        <h1 className="text-3xl md:text-5xl font-black font-sans uppercase leading-[0.9] mb-6">
                             {phase.title}
                         </h1>
                         {phase.heroLead ? (
