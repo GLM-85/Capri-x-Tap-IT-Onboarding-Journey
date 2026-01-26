@@ -243,7 +243,7 @@ const CapriOnboardingClient: React.FC = () => {
         </div>
       </main>
 
-      <SiteFooter />
+      <SiteFooter variant="capri" />
     </div>
   );
 };

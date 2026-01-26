@@ -650,7 +650,7 @@ export default function PhaseDetailClient({
         </div>
       </main>
 
-      <SiteFooter />
+      <SiteFooter variant="capri" />
     </div>
   );
 }
