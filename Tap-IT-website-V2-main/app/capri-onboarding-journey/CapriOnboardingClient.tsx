@@ -81,7 +81,7 @@ const CapriOnboardingClient: React.FC = () => {
                  <span className="text-[#FF7650]">Onboarding Journey</span>
               </h1>
               <p className="text-xl md:text-3xl font-light opacity-90 max-w-3xl leading-normal mb-10 md:text-left mx-auto md:mx-0">
-                  Een gefaseerde aanpak waarin we Capri begeleiden naar een veilige, schaalbare en investeerbare IT-fundering, zonder snelheid of ondernemerschap te remmen.
+                  Een gefaseerde aanpak waarin we Capri begeleiden naar een veilige, schaalbare IT-basis die klaar is voor groei en toekomstige ontwikkelingen.
               </p>
            </div>
         </section>
