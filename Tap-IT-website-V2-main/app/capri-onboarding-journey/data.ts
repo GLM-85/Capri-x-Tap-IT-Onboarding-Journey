@@ -341,8 +341,19 @@ export const phases: PhaseData[] = [
     ],
     
     checklist: {
-      needs: [],
-      roles: [],
+      needs: [
+        "Resultaten uit Fase 1 & 2 (HLD + MVP-afbakening)",
+        "Inzicht in operationele processen van Capri",
+        "Verwachte groei (gebruikers, partners, complexiteit)",
+        "Security- en compliance-eisen vanuit klanten/partners",
+        "Netwerk- en werkplekobservaties uit de intake (geen detailontwerp)"
+      ],
+      roles: [
+        "TAP-IT solution architect(en)",
+        "TAP-IT security / operations",
+        "Capri beslisser (business / partner)",
+        "Optioneel: key user voor operationele toets"
+      ],
       decisions: [
         "Werkbaarheid van het ontwerp voor dagelijkse operatie",
         "Inzicht in impact op gebruikers en groei",
