@@ -349,6 +349,11 @@ export default function PhaseDetailClient({
                                 ))}
                             </ul>
                         )}
+                        {phase.id === 'fase-3' && (
+                            <p className="text-[#202020] mt-4">
+                                Capri valideert de uitkomst op toepasbaarheid en impact, niet op technische detaillering.
+                            </p>
+                        )}
                         {phase.id === 'fase-0' && (
                             <div className="mt-6 bg-[#E9ECEC] rounded-xl p-6 border-l-4 border-[#336F73]">
                                 <span className="text-xs font-bold uppercase tracking-widest text-[#336F73] block mb-2">
