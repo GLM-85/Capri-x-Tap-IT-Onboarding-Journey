@@ -53,12 +53,12 @@ const CapriOnboardingClient: React.FC = () => {
       </div>
 
       <main className="flex-grow">
-        <div className="pdf-ignore sticky top-[104px] z-40 flex justify-end container mx-auto max-w-6xl px-6">
+        <div className="pdf-ignore sticky top-[104px] z-[90] flex justify-end container mx-auto max-w-6xl px-6 pointer-events-none">
           <button
             type="button"
             onClick={handleDownloadPdf}
             disabled={generating}
-            className="inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            className="pointer-events-auto inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             aria-label="Download PDF"
             title="Download PDF"
           >
@@ -76,12 +76,12 @@ const CapriOnboardingClient: React.FC = () => {
               <div className="inline-block px-4 py-2 bg-[#336F73] text-white text-xs font-bold uppercase tracking-widest rounded-full mb-8">
                   Journey Overview
               </div>
-              <h1 className="text-5xl md:text-7xl font-black font-sans uppercase leading-[0.9] tracking-tight mb-8 text-[#204445]">
+                        <h1 className="text-3xl md:text-5xl font-black font-sans uppercase leading-[0.9] tracking-tight mb-8 text-[#204445]">
                  Capri × Tap-IT <br />
                  <span className="text-[#FF7650]">Onboarding Journey</span>
               </h1>
               <p className="text-xl md:text-3xl font-light opacity-90 max-w-3xl leading-normal mb-10 md:text-left mx-auto md:mx-0">
-                  Een gefaseerde aanpak waarin we Capri begeleiden naar een veilige, schaalbare en investeerbare IT-fundering — zonder snelheid of ondernemerschap te remmen.
+                  Een gefaseerde aanpak waarin we Capri begeleiden naar een veilige, schaalbare IT-basis die klaar is voor groei en toekomstige ontwikkelingen.
               </p>
            </div>
         </section>
@@ -222,15 +222,15 @@ const CapriOnboardingClient: React.FC = () => {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base">
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
-                            Beschermt groei zonder innovatie te vertragen — Operational resilience
+                            Beschermt groei zonder innovatie te vertragen, Operational resilience.
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
-                            Maakt risico’s expliciet vóór ze schade veroorzaken — Risk-adjusted value
+                            Maakt risico’s expliciet vóór ze schade veroorzaken, Risk-adjusted value.
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
-                            Ondersteunt professionalisering richting klanten, partners en investeerders — Enterprise compatibility
+                            Ondersteunt professionalisering richting klanten, partners en investeerders, Enterprise compatibility.
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 shrink-0"></span>
@@ -243,7 +243,7 @@ const CapriOnboardingClient: React.FC = () => {
         </div>
       </main>
 
-      <SiteFooter />
+      <SiteFooter variant="capri" />
     </div>
   );
 };

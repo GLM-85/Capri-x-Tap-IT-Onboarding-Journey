@@ -1,7 +1,28 @@
 import React from 'react';
 import Link from './Link';
 
-const SiteFooter: React.FC = () => {
+interface SiteFooterProps {
+  variant?: 'default' | 'capri';
+}
+
+const SiteFooter: React.FC<SiteFooterProps> = ({ variant = 'default' }) => {
+  if (variant === 'capri') {
+    return (
+      <footer className="bg-[#E5E0DC] text-[#204445] py-8 border-t border-[#D6D1CD]">
+        <div className="container mx-auto max-w-6xl px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium opacity-70">
+          <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+             <span className="font-black font-sans uppercase tracking-widest text-sm">Tap-IT</span>
+             <span className="hidden md:inline w-px h-3 bg-[#204445]/30"></span>
+             <span>Deze pagina maakt onderdeel uit van de Capri × Tap-IT Onboarding Journey.</span>
+          </div>
+          <div>
+            &copy; Tap-IT 2025
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer id="contact" className="bg-[#081A57] text-white pt-20 pb-10">
       <div className="container mx-auto px-6">

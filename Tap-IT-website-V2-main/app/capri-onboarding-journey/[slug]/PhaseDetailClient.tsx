@@ -118,10 +118,17 @@ const SidebarNav = ({ phase }: { phase: PhaseData }) => {
                 <nav className="flex flex-col gap-4">
                     {[
                         { id: 'doel', label: 'Doel van deze fase' },
+                        phase.rolesResponsibilities ? { id: 'rollen', label: 'Rollen & verantwoordelijkheden' } : null,
                         { id: 'activiteiten', label: 'Wat doen we?' },
                         phase.intakeDomains ? { id: 'intake-per-domein', label: 'Intake per domein' } : null,
                         phase.questions ? { id: 'vragen', label: 'Kernvragen' } : null,
+                        phase.networkingScope ? { id: 'networking-kader', label: 'Networking, positionering' } : null,
+                        phase.managedWorkplace ? { id: 'managed-workplace', label: 'Managed Modern Workplace' } : null,
+                        phase.mvpDefinition ? { id: 'mvp-definitie', label: 'MVP-definitie' } : null,
+                        phase.managementPricingImpact ? { id: 'beheer-pricing', label: 'Beheer & pricing' } : null,
                         { id: 'deliverable', label: 'Deliverable' },
+                        phase.accordMoment ? { id: 'akkoordmoment', label: 'Akkoordmoment' } : null,
+                        phase.summary ? { id: 'samenvatting', label: 'Samenvatting' } : null,
                     ].filter(Boolean).map((link: any) => (
                         <a
                            key={link.id}
@@ -209,12 +216,12 @@ export default function PhaseDetailClient({
       </div>
 
       <main className="flex-grow">
-        <div className="pdf-ignore sticky top-[104px] z-50 flex justify-end container mx-auto max-w-7xl px-6">
+        <div className="pdf-ignore sticky top-[120px] z-[90] flex justify-end container mx-auto max-w-7xl px-6 pointer-events-none">
           <button
             type="button"
             onClick={handleDownloadPdf}
             disabled={generating}
-            className="inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            className="pointer-events-auto inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             aria-label="Download PDF"
             title="Download PDF"
           >
@@ -246,12 +253,23 @@ export default function PhaseDetailClient({
                      
                      {/* Text Content */}
                      <div className="max-w-4xl pt-2">
-                        <h1 className="text-4xl md:text-7xl font-black font-sans uppercase leading-[0.9] mb-6">
+                        <h1 className="text-3xl md:text-5xl font-black font-sans uppercase leading-[0.9] mb-6">
                             {phase.title}
                         </h1>
-                        <p className="text-lg md:text-2xl font-bold text-white/90 leading-relaxed max-w-3xl mb-8">
-                            {phase.heroSummary}
-                        </p>
+                        {phase.heroLead ? (
+                            <div className="max-w-3xl mb-8 space-y-4">
+                                <p className="text-lg md:text-2xl font-bold text-white/90 leading-relaxed">
+                                    {phase.heroLead}
+                                </p>
+                                <p className="text-base md:text-xl text-white/80 leading-relaxed">
+                                    {phase.heroSummary}
+                                </p>
+                            </div>
+                        ) : (
+                            <p className="text-lg md:text-2xl font-bold text-white/90 leading-relaxed max-w-3xl mb-8">
+                                {phase.heroSummary}
+                            </p>
+                        )}
                         
                         {/* Tags as Pills (Dark Grey) */}
                         <div className="flex flex-wrap gap-3">
@@ -271,7 +289,7 @@ export default function PhaseDetailClient({
         </section>
 
         {/* --- PROGRESS BAR (Sticky) --- */}
-        <div className="bg-white border-b border-gray-100 sticky top-[72px] z-50 shadow-sm">
+        <div className="bg-white border-b border-gray-100 sticky top-[88px] z-[80] shadow-sm">
              <div className="container mx-auto max-w-5xl px-6 py-6">
                  <div className="flex justify-between items-center relative">
                       {/* Grey Line */}
@@ -290,8 +308,13 @@ export default function PhaseDetailClient({
                                       {p.number}
                                   </div>
                                   {isCurrent && (
-                                      <div className="absolute top-full mt-6 text-[10px] font-bold uppercase tracking-widest text-[#FF7650] whitespace-nowrap">
+                                      <div className="absolute top-full mt-2 text-[10px] font-bold uppercase tracking-widest text-[#FF7650] whitespace-nowrap">
                                           FASE {p.number}
+                                      </div>
+                                  )}
+                                  {isCurrent && phase.phaseIndicatorNote && (
+                                      <div className="absolute top-full mt-6 text-[10px] font-medium text-[#A0A0A0] whitespace-nowrap">
+                                          {phase.phaseIndicatorNote}
                                       </div>
                                   )}
                               </Link>
@@ -306,7 +329,7 @@ export default function PhaseDetailClient({
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
                 
                 {/* Left Column: Sidebar (3/12) */}
-                <div className="lg:w-3/12 lg:sticky lg:top-32 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+                <div className="lg:w-3/12 lg:sticky lg:top-48 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
                      <SidebarNav phase={phase} />
                 </div>
 
@@ -316,6 +339,21 @@ export default function PhaseDetailClient({
                     {/* 1. DOEL */}
                     <ContentCard title="Doel van deze fase" id="doel" defaultOpen={true}>
                         <p className="text-[#202020]">{phase.goal}</p>
+                        {phase.goalBullets && (
+                            <ul className="space-y-2 mt-4">
+                                {phase.goalBullets.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                        <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        {phase.id === 'fase-3' && (
+                            <p className="text-[#202020] mt-4">
+                                Capri valideert de uitkomst op toepasbaarheid en impact, niet op technische detaillering.
+                            </p>
+                        )}
                         {phase.id === 'fase-0' && (
                             <div className="mt-6 bg-[#E9ECEC] rounded-xl p-6 border-l-4 border-[#336F73]">
                                 <span className="text-xs font-bold uppercase tracking-widest text-[#336F73] block mb-2">
@@ -333,6 +371,34 @@ export default function PhaseDetailClient({
                             </div>
                         )}
                     </ContentCard>
+
+                    {/* 1b. ROLLEN & VERANTWOORDELIJKHEDEN */}
+                    {phase.rolesResponsibilities && (
+                        <ContentCard title="Rollen & verantwoordelijkheden" id="rollen" defaultOpen={true}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {phase.rolesResponsibilities.map((role, i) => (
+                                    <div key={i} className="bg-white rounded-xl border border-[#E1E9E6] p-5">
+                                        <h4 className="text-sm font-bold uppercase tracking-widest text-[#204445] mb-3">
+                                            {role.heading}
+                                        </h4>
+                                        <ul className="space-y-2 text-sm text-[#202020]">
+                                            {role.bullets.map((item, j) => (
+                                                <li key={j} className="flex items-start gap-3">
+                                                    <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                            {phase.rolesAnalogy && (
+                                <p className="mt-5 text-[#204445] font-bold">
+                                    “{phase.rolesAnalogy}”
+                                </p>
+                            )}
+                        </ContentCard>
+                    )}
 
                     {/* 2. ACTIVITEITEN */}
                     <ContentCard title="Wat doen we?" id="activiteiten" defaultOpen={true}>
@@ -392,6 +458,80 @@ export default function PhaseDetailClient({
                         </ContentCard>
                     )}
 
+                    {/* 3b. NETWORKING KADER */}
+                    {phase.networkingScope && (
+                        <ContentCard title="Networking, positionering in deze fase" id="networking-kader" defaultOpen={true}>
+                            <ul className="space-y-3">
+                                {phase.networkingScope.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                        <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </ContentCard>
+                    )}
+
+                    {/* 3c. MANAGED MODERN WORKPLACE */}
+                    {phase.managedWorkplace && (
+                        <ContentCard title="Managed Modern Workplace – Standaard Opbouw" id="managed-workplace" defaultOpen={true}>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                {phase.managedWorkplace.map((section, i) => (
+                                    <div key={i} className="bg-white rounded-xl border border-[#E1E9E6] p-5">
+                                        <h4 className="text-sm font-bold uppercase tracking-widest text-[#204445] mb-3">
+                                            {section.heading}
+                                        </h4>
+                                        <ul className="space-y-2 text-sm text-[#202020]">
+                                            {section.items.map((item, j) => (
+                                                <li key={j} className="flex items-start gap-3">
+                                                    <span className="w-1.5 h-1.5 bg-[#204445] rounded-full mt-2 shrink-0"></span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </ContentCard>
+                    )}
+
+                    {/* 3d. MVP DEFINITIE */}
+                    {phase.mvpDefinition && (
+                        <ContentCard title="MVP-definitie" id="mvp-definitie" defaultOpen={true}>
+                            <p className="text-[#202020]">{phase.mvpDefinition}</p>
+                            {phase.mvpBullets && (
+                                <ul className="space-y-2 mt-3">
+                                    {phase.mvpBullets.map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                            <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {phase.mvpClosing && (
+                                <p className="text-[#202020] mt-3">{phase.mvpClosing}</p>
+                            )}
+                        </ContentCard>
+                    )}
+
+                    {/* 3e. BEHEER & PRICING */}
+                    {phase.managementPricingImpact && (
+                        <ContentCard title="Beheer & pricing-impact" id="beheer-pricing" defaultOpen={true}>
+                            <ul className="space-y-3">
+                                {phase.managementPricingImpact.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-[#202020]">
+                                        <div className="w-1.5 h-1.5 bg-[#202020] rounded-full mt-2.5 shrink-0"></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                            {phase.managementPricingNote && (
+                                <p className="text-[#202020] mt-4">{phase.managementPricingNote}</p>
+                            )}
+                        </ContentCard>
+                    )}
+
                     {/* 4. DELIVERABLE */}
                     <ContentCard title="Deliverable" id="deliverable" defaultOpen={true}>
                         {phase.id === 'fase-0' ? (
@@ -431,13 +571,6 @@ export default function PhaseDetailClient({
                                     </h3>
                                 </div>
 
-                                <p className="text-[#202020] mt-3">
-                                    Het High Level Design beschrijft de keuzes en uitgangspunten op hoofdlijnen: hoe jullie willen werken en welke afspraken daarbij horen.
-                                </p>
-                                <p className="text-[#202020] mt-2">
-                                    Capri gebruikt dit om intern af te stemmen en om richting te geven aan Fase 2 (Blueprint). Dit is nadrukkelijk geen bouw- of implementatieplan.
-                                </p>
-
                                 {phase.deliverables.length > 1 && (
                                     <ul className="space-y-3 mt-4">
                                         {phase.deliverables.slice(1).map((item, i) => (
@@ -458,8 +591,22 @@ export default function PhaseDetailClient({
                         )}
                     </ContentCard>
 
+                    {/* 4b. AKKOORDMOMENT */}
+                    {phase.accordMoment && (
+                        <ContentCard title="Akkoordmoment" id="akkoordmoment" defaultOpen={true}>
+                            <p className="text-[#202020]">{phase.accordMoment}</p>
+                        </ContentCard>
+                    )}
+
                     {/* 5. CHECKLIST (Dark Section) */}
                     <ChecklistSection checklist={phase.checklist} />
+
+                    {/* 6. SAMENVATTING */}
+                    {phase.summary && (
+                        <ContentCard title="Samenvatting" id="samenvatting" defaultOpen={true}>
+                            <p className="text-[#202020]">{phase.summary}</p>
+                        </ContentCard>
+                    )}
 
                     {/* 6. NEXT STEP (Floating Pill) */}
                     <div className="flex justify-end mt-12">
@@ -503,7 +650,7 @@ export default function PhaseDetailClient({
         </div>
       </main>
 
-      <SiteFooter />
+      <SiteFooter variant="capri" />
     </div>
   );
 }

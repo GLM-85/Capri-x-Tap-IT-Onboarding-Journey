@@ -42,8 +42,8 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'solid' }) => {
   
   // OPTIMIZATION: Tighter padding for standard laptops (py-2.5), larger for 2xl (py-5)
   const navContainerClass = isTransparent
-    ? 'fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-300 py-3 2xl:py-5'
-    : 'fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300 py-2.5 2xl:py-5';
+    ? 'fixed top-0 left-0 w-full z-[100] bg-transparent transition-all duration-300 py-3 2xl:py-5'
+    : 'fixed top-0 left-0 w-full z-[100] bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300 py-2.5 2xl:py-5';
 
   const linkClass = (path: string) => {
     const isActive = currentPath === path;
