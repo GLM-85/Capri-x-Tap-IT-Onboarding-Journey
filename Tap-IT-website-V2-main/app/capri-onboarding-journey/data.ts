@@ -301,11 +301,11 @@ export const phases: PhaseData[] = [
     heroSummary: "TAP-IT vertaalt de gekozen architectuurrichting naar een intern ontwerp waarin schaalbaarheid, security en beheersbaarheid structureel zijn vastgelegd.",
     phaseIndicatorNote: "Deze fase is primair intern gericht. TAP-IT legt hier de architecturale basis vast.",
     
-    goal: "In deze fase stelt TAP-IT het interne ontwerp vast dat als basis dient voor implementatie en beheer. De focus ligt op het maken van expliciete architectuurkeuzes die passen bij de context en groeiplannen van Capri. Capri valideert de uitkomst op toepasbaarheid en impact, niet op technische detaillering.",
+    goal: "In deze fase stelt TAP-IT het interne ontwerp vast dat als basis dient voor implementatie en beheer. De focus ligt op expliciete architectuurkeuzes, met als criteria. Capri valideert de uitkomst op toepasbaarheid en impact, niet op technische detaillering.",
     goalBullets: [
-      "passen bij de context en groeiplannen van Capri",
-      "voldoen aan security- en compliance-vereisten",
-      "beheersbaar en herhaalbaar zijn in de praktijk"
+      "Context en groeiplannen van Capri",
+      "Security- en compliance-vereisten",
+      "Beheersbaarheid en herhaalbaarheid in de praktijk"
     ],
     
     activities: [
