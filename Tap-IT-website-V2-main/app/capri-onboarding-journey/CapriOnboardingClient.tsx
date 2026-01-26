@@ -53,7 +53,7 @@ const CapriOnboardingClient: React.FC = () => {
       </div>
 
       <main className="flex-grow">
-        <div className="pdf-ignore sticky top-[104px] z-40 flex justify-end container mx-auto max-w-6xl px-6">
+        <div className="pdf-ignore sticky top-[104px] z-[90] flex justify-end container mx-auto max-w-6xl px-6">
           <button
             type="button"
             onClick={handleDownloadPdf}
@@ -76,7 +76,7 @@ const CapriOnboardingClient: React.FC = () => {
               <div className="inline-block px-4 py-2 bg-[#336F73] text-white text-xs font-bold uppercase tracking-widest rounded-full mb-8">
                   Journey Overview
               </div>
-              <h1 className="text-5xl md:text-7xl font-black font-sans uppercase leading-[0.9] tracking-tight mb-8 text-[#204445]">
+                        <h1 className="text-3xl md:text-5xl font-black font-sans uppercase leading-[0.9] tracking-tight mb-8 text-[#204445]">
                  Capri × Tap-IT <br />
                  <span className="text-[#FF7650]">Onboarding Journey</span>
               </h1>

@@ -216,7 +216,7 @@ export default function PhaseDetailClient({
       </div>
 
       <main className="flex-grow">
-        <div className="pdf-ignore sticky top-[104px] z-50 flex justify-end container mx-auto max-w-7xl px-6">
+        <div className="pdf-ignore sticky top-[104px] z-[90] flex justify-end container mx-auto max-w-7xl px-6">
           <button
             type="button"
             onClick={handleDownloadPdf}
@@ -289,7 +289,7 @@ export default function PhaseDetailClient({
         </section>
 
         {/* --- PROGRESS BAR (Sticky) --- */}
-        <div className="bg-white border-b border-gray-100 sticky top-[72px] z-50 shadow-sm">
+        <div className="bg-white border-b border-gray-100 sticky top-[72px] z-[80] shadow-sm">
              <div className="container mx-auto max-w-5xl px-6 py-6">
                  <div className="flex justify-between items-center relative">
                       {/* Grey Line */}
