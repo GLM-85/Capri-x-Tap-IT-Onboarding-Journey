@@ -216,12 +216,12 @@ export default function PhaseDetailClient({
       </div>
 
       <main className="flex-grow">
-        <div className="pdf-ignore sticky top-[120px] z-[90] flex justify-end container mx-auto max-w-7xl px-6">
+        <div className="pdf-ignore sticky top-[120px] z-[90] flex justify-end container mx-auto max-w-7xl px-6 pointer-events-none">
           <button
             type="button"
             onClick={handleDownloadPdf}
             disabled={generating}
-            className="inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            className="pointer-events-auto inline-flex items-center justify-center bg-[#204445] text-white w-10 h-10 rounded-full shadow-md hover:bg-[#1f3233] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             aria-label="Download PDF"
             title="Download PDF"
           >
